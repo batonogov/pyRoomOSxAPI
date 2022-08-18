@@ -1,4 +1,4 @@
-import setuptools
+import setuptools, pyRoomOSxAPI
 
 
 with open('README.md', 'r') as file:
@@ -9,7 +9,7 @@ with open('requirements.txt', 'r') as file:
 
 setuptools.setup(
     name='pyRoomOSxAPI',
-    version='0.0.1',
+    version=pyRoomOSxAPI.__version__,
     author='Fedor Batonogov',
     author_email='batonogov@icloud.com',
     description='Simple implementation RoomOS xAPI',
