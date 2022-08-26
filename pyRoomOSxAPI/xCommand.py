@@ -91,6 +91,12 @@ class Conference:
     def __init__(self) -> str:
         pass
 
+    class DoNotDisturb:
+        pass
+
+        def Deactivate():
+            pass
+
     class SpeakerLock:
         pass
 
@@ -183,6 +189,12 @@ class Message:
 class Network:
     def __init__(self) -> str:
         pass
+
+    class Wifi:
+        pass
+
+        def List():
+            pass
 
 class NetworkServices:
     def __init__(self) -> str:
