@@ -9,7 +9,11 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
         driver = webdriver.Chrome()
         driver.get(url)
         time.sleep(1)
+
+        # Пакуем группы команд 
         reference = [c for c in driver.find_element(By.CLASS_NAME, 'sub-menu').text.split('\n')]
+
+        # Перебор xCommand
         driver.find_element(By.CSS_SELECTOR, "#app > div > form > div.type-buttons.filter > button:nth-child(2)").click()
         for i in range(len(reference)):
             driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/domain/?domain={reference[i]}")]').click()
@@ -77,5 +81,5 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
         event_line = ['.'.join(p) for p in [c.split()[1:] for c in [c.text for c in driver.find_elements(By.CLASS_NAME, 'node-path')]]]
         for i in range(len(event_line)):
             driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/Event.{event_line[i]}/")]').click()
-            
+
 xapi_cmd(output_file_name='xCommand.py')
