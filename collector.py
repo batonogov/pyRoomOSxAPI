@@ -41,20 +41,20 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
                         if name not in temp:
                             temp.append(name)
                             f.write(f'        class {name}:\n            pass\n\n')
-                        f.write(f"            def {switcher[4]}():\n            pass\n\n")
+                        f.write(f"            def {switcher[4]}():\n                pass\n\n")
 
-                    else:
-                        f.write(f.write(f'    def {"_".join(switcher)}():\n            pass\n\n'))
+                    # else:
+                    #     f.write(f.write(f'    def {"_".join(switcher)}():\n            pass\n\n'))
 
                 except Exception as e:
                     print(e)
 
-                try:
-                    info = driver.find_element(By.CLASS_NAME, 'info').text.split()
-                    print(len(info), f'{info}\n')
-                    f.write(f"        '''\n            {' '.join(info)}\n        '''\n")
-                except Exception as e:
-                    print(e)
+                # try:
+                #     info = driver.find_element(By.CLASS_NAME, 'info').text.split()
+                #     print(len(info), f'{info}\n')
+                #     f.write(f"        '''\n            {' '.join(info)}\n        '''\n")
+                # except Exception as e:
+                #     print(e)
 
                 # try:
                 #     param = driver.find_element(By.CLASS_NAME, 'param').text
