@@ -3,6 +3,22 @@ from selenium.webdriver.common.by import By
 import time
 
 
+temp = []
+
+# Генератор стукруты из списка
+def generator(data, indent = ' ' * 4):
+    for i in range(len(data[1:])):
+        compare = i+1 != len(data[1:])
+        name = data[i+1]
+        if compare and name not in temp:
+            print(f'{indent * i}class {name}:\n{indent * i}    pass\n\n')
+            
+        elif not compare and name not in temp:
+            print(f'{indent * i}def {name}():\n{indent * i}    pass\n\n')
+
+        # print(len(data), data)
+        temp.append(name)
+
 # Запрос перечня ссылок на группы комманд
 def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name=None):
     with open(f'pyRoomOSxAPI/{output_file_name}', 'w') as f:
@@ -27,24 +43,26 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
                 try:
                     driver.find_element(By.CLASS_NAME, 'switcher').click()
                     switcher = driver.find_element(By.CLASS_NAME, 'language-javascript').text.split()
-                    print(len(switcher), f'{switcher}\n')
-                    
-                    if len(switcher) == 4 and all(x.isalpha() for x in switcher[2]):
-                        name = switcher[2]
-                        if name not in temp:
-                            temp.append(name)
-                            f.write(f'    class {name}:\n        pass\n\n')
-                        f.write(f'        def {switcher[3]}():\n            pass\n\n')
 
-                    elif len(switcher) == 5 and all(x.isalpha() for x in switcher[3]):
-                        name = switcher[3]
-                        if name not in temp:
-                            temp.append(name)
-                            f.write(f'        class {name}:\n            pass\n\n')
-                        f.write(f"            def {switcher[4]}():\n                pass\n\n")
+                    colon_finder = [c for c in range(len(switcher)) if ':' in switcher[c]]
+
+                    if colon_finder:
+                        swither_slice = switcher[:colon_finder[0]]
+                        generator(swither_slice)
+                        # my_def = switcher[colon_finder[0]-1]
+                        # indent = '    ' * (colon_finder[0]-1)
+                        # for c in range(len(swither_slice)):
+                        #     if len(swither_slice) == c+1:
+                        #         print(f'{indent}def {my_def}():')
+                        #         f.write(f'{indent}def {my_def.lower()}():\n{indent}    pass\n\n')
+                        #     else:
+                        #         print(f'{indent}class {my_def}:')
+                        #         f.write(f'{indent}class {my_def.lower()}():\n{indent}    pass\n\n')
 
                     # else:
-                    #     f.write(f.write(f'    def {"_".join(switcher)}():\n            pass\n\n'))
+                    #     f.write(f"'ЛОХ, ПИДР!'\n\n")
+
+                    # print(f'{switcher}', len(switcher), colon_finder)
 
                 except Exception as e:
                     print(e)
