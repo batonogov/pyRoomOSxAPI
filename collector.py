@@ -6,15 +6,19 @@ import time
 temp = []
 
 # Генератор стукруты из списка
-def generator(data, indent = ' ' * 4):
+def generator(data, f, indent = ' ' * 4):
     for i in range(len(data[1:])):
         compare = i+1 != len(data[1:])
         name = data[i+1]
         if compare and name not in temp:
-            print(f'{indent * i}class {name}:\n{indent * i}    pass\n\n')
+            # f.write(f'{indent * i}class {name}:\n{indent * i}    pass\n\n')
+            # pass
+            f.write(i)
             
         elif not compare and name not in temp:
-            print(f'{indent * i}def {name}():\n{indent * i}    pass\n\n')
+            # f.write(f'{indent * i}def {name}():\n{indent * i}    pass\n\n')
+            # pass
+            f.write(i)
 
         # print(len(data), data)
         temp.append(name)
@@ -34,8 +38,8 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
         for i in range(len(reference)):
             driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/domain/?domain={reference[i]}")]').click()
             command_line = ['.'.join(p) for p in [c.split()[1:] for c in [c.text for c in driver.find_elements(By.CLASS_NAME, 'node-path')]]]
-            f.write(f'class {reference[i].replace(" ", "_").replace("(", "").replace(")", "")}:\n')
-            f.write(f'    def __init__(self) -> str:\n        pass\n\n')
+            # f.write(f'class {reference[i].replace(" ", "_").replace("(", "").replace(")", "")}:\n')
+            # f.write(f'    def __init__(self) -> str:\n        pass\n\n')
             temp = []
             for i in range(len(command_line)):
                 driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/Command.{command_line[i]}/")]').click()
@@ -48,7 +52,7 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
 
                     if colon_finder:
                         swither_slice = switcher[:colon_finder[0]]
-                        generator(swither_slice)
+                        generator(swither_slice, f)
                         # my_def = switcher[colon_finder[0]-1]
                         # indent = '    ' * (colon_finder[0]-1)
                         # for c in range(len(swither_slice)):
