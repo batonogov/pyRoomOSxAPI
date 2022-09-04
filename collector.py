@@ -1,6 +1,6 @@
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import time
 
 
 temp = []
@@ -14,7 +14,7 @@ def generator(data, f, indent = ' ' * 4):
             # f.write(f'{indent * i}class {name}:\n{indent * i}    pass\n\n')
             # pass
             f.write(i)
-            
+
         elif not compare and name not in temp:
             # f.write(f'{indent * i}def {name}():\n{indent * i}    pass\n\n')
             # pass
@@ -30,7 +30,7 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
         driver.get(url)
         time.sleep(1)
 
-        # Пакуем группы команд 
+        # Пакуем группы команд
         reference = [c for c in driver.find_element(By.CLASS_NAME, 'sub-menu').text.split('\n')]
 
         # Перебор xCommand
@@ -40,7 +40,7 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
             command_line = ['.'.join(p) for p in [c.split()[1:] for c in [c.text for c in driver.find_elements(By.CLASS_NAME, 'node-path')]]]
             # f.write(f'class {reference[i].replace(" ", "_").replace("(", "").replace(")", "")}:\n')
             # f.write(f'    def __init__(self) -> str:\n        pass\n\n')
-            temp = []
+            # temp = []
             for i in range(len(command_line)):
                 driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/Command.{command_line[i]}/")]').click()
 
@@ -64,7 +64,7 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
                         #         f.write(f'{indent}class {my_def.lower()}():\n{indent}    pass\n\n')
 
                     # else:
-                    #     f.write(f"'ЛОХ, ПИДР!'\n\n")
+                    #     f.write(f"'empty'\n\n")
 
                     # print(f'{switcher}', len(switcher), colon_finder)
 

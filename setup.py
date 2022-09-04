@@ -1,11 +1,12 @@
-import setuptools, pyRoomOSxAPI
+import setuptools
+import pyRoomOSxAPI
 
 
-with open('README.md', 'r') as file:
-	long_description = file.read()
+with open('README.md', 'r', encoding='utf-8') as file:
+    long_description = file.read()
 
-# with open('requirements.txt', 'r') as file:
-# 	requirements = [c for c in file.read().split('\n') if c]
+# with open('requirements.txt', 'r', encoding='utf-8') as file:
+#     requirements = [c for c in file.read().split('\n') if c]
 
 setuptools.setup(
     name='pyRoomOSxAPI',
