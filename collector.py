@@ -1,48 +1,42 @@
+'''Data colector'''
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from tqdm import tqdm
 
-
-temp = []
 
 # Генератор стукруты из списка
-def generator(data, f, indent = ' ' * 4):
+def generator(data, file, indent = ' ' * 4):
+    '''Generate data from xapi and write data to file'''
     for i in range(len(data[1:])):
         compare = i+1 != len(data[1:])
         name = data[i+1]
-        if compare and name not in temp:
-            # f.write(f'{indent * i}class {name}:\n{indent * i}    pass\n\n')
-            # pass
-            f.write(i)
-
-        elif not compare and name not in temp:
-            # f.write(f'{indent * i}def {name}():\n{indent * i}    pass\n\n')
-            # pass
-            f.write(i)
-
-        # print(len(data), data)
-        temp.append(name)
+        if compare and name not in TEMP:
+            file.write(f'{indent * i}class {name}:\n{indent * i}    pass\n\n')
+        elif not compare and name not in TEMP:
+            file.write(f'{indent * i}def {name}():\n{indent * i}    pass\n\n')
+        TEMP.append(name)
 
 # Запрос перечня ссылок на группы комманд
 def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name=None):
-    with open(f'pyRoomOSxAPI/{output_file_name}', 'w') as f:
+    '''Get links on command groups'''
+    global TEMP
+    TEMP = []
+    with open(f'pyRoomOSxAPI/{output_file_name}', 'w', encoding='utf-8') as file:
         driver = webdriver.Chrome()
         driver.get(url)
         time.sleep(1)
 
         # Пакуем группы команд
-        reference = [c for c in driver.find_element(By.CLASS_NAME, 'sub-menu').text.split('\n')]
+        reference = driver.find_element(By.CLASS_NAME, 'sub-menu').text.split('\n')
 
         # Перебор xCommand
         driver.find_element(By.CSS_SELECTOR, "#app > div > form > div.type-buttons.filter > button:nth-child(2)").click()
-        for i in range(len(reference)):
-            driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/domain/?domain={reference[i]}")]').click()
+        for i in tqdm(enumerate(reference)):
+            driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/domain/?domain={reference[i[0]]}")]').click()
             command_line = ['.'.join(p) for p in [c.split()[1:] for c in [c.text for c in driver.find_elements(By.CLASS_NAME, 'node-path')]]]
-            # f.write(f'class {reference[i].replace(" ", "_").replace("(", "").replace(")", "")}:\n')
-            # f.write(f'    def __init__(self) -> str:\n        pass\n\n')
-            # temp = []
-            for i in range(len(command_line)):
-                driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/Command.{command_line[i]}/")]').click()
+            for j in enumerate(command_line):
+                driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/Command.{command_line[j[0]]}/")]').click()
 
                 try:
                     driver.find_element(By.CLASS_NAME, 'switcher').click()
@@ -52,24 +46,12 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
 
                     if colon_finder:
                         swither_slice = switcher[:colon_finder[0]]
-                        generator(swither_slice, f)
-                        # my_def = switcher[colon_finder[0]-1]
-                        # indent = '    ' * (colon_finder[0]-1)
-                        # for c in range(len(swither_slice)):
-                        #     if len(swither_slice) == c+1:
-                        #         print(f'{indent}def {my_def}():')
-                        #         f.write(f'{indent}def {my_def.lower()}():\n{indent}    pass\n\n')
-                        #     else:
-                        #         print(f'{indent}class {my_def}:')
-                        #         f.write(f'{indent}class {my_def.lower()}():\n{indent}    pass\n\n')
+                        generator(swither_slice, file)
+                    else:
+                        generator(switcher, file)
 
-                    # else:
-                    #     f.write(f"'empty'\n\n")
-
-                    # print(f'{switcher}', len(switcher), colon_finder)
-
-                except Exception as e:
-                    print(e)
+                except Exception as exception:
+                    print(exception)
 
                 # try:
                 #     info = driver.find_element(By.CLASS_NAME, 'info').text.split()
@@ -92,7 +74,7 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
                 # except:
                 #     pass
 
-    # # Перебор xConfiguration   
+    # # Перебор xConfiguration
     # driver.find_element(By.CSS_SELECTOR, "#app > div > form > div.type-buttons.filter > button:nth-child(3)").click()
     # for i in range(len(reference)):
     #     driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/domain/?domain={reference[i]}")]').click()
