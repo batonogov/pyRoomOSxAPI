@@ -9,6 +9,8 @@ jobs:
       matrix:
         python-version: ["3.10"]
     steps:
+    - uses: reviewdog/action-setup@v1
+    - run: reviewdog -version
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
