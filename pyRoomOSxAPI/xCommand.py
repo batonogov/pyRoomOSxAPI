@@ -1,3273 +1,3386 @@
 def Dial():
-    pass
+    """
+    Dial out from the device. Returns information about the CallId and ConferenceId, which are required for some of the other commands.
+    """
+    return "xCommand Dial"
 
 class Audio:
-    pass
 
     def Select():
-        pass
+        """
+        Select which type of audio device to use (built-in loudspeakers and microphone, headsets, or handset).
+        """
+        return "xCommand Audio Select"
 
 class Audio:
-    pass
 
     class Diagnostics:
-        pass
-
+    
         def MeasureDelay():
-            pass
+            """
+            This command measures the audio delay/latency in a device that is connected to the video conferencing device. A typical use case it to measure the delay in a TV connected to the video conferencing device via the HDMI connector. If the delay in a TV is too high, the real-time experience of a video call will be substantially degraded. If the delay is more than 50 ms we recommend the user to find a TV setting that has shorter delay. Typical TV settings that can reduce the delay are: Gaming Mode and...
+            """
+            return "xCommand Audio Diagnostics MeasureDelay"
 
 class Audio:
-    pass
 
     class Diagnostics:
-        pass
-
+    
         class Advanced:
-            pass
-
+        
             def Run():
-                pass
+                """
+                This command sends out a noise signal sequentially on all audio output connectors and measures the room impulse response (RIR) between the output and the microphones. If a RIR is detected, the detected number of microphones (input), the detected number of output connectors, and the detected delay between the output and input is reported back. Example: xCommand Audio Diagnostics Advanced Run Volume: 50 MeasurementLength: 1 Result returned -> OK *r AdvancedRunResult (status=OK): *r AdvancedRunResu...
+                """
+                return "xCommand Audio Diagnostics Advanced Run"
 
 class Audio:
-    pass
 
     class Diagnostics:
-        pass
-
+    
         class AecReverb:
-            pass
-
+        
             def Reset():
-                pass
+                """
+                Reset the acoustic echo cancellation. This command is useful when making changes in the acoustical treatment of the room. All previous adaptations are cleared and a new measurement of the reverberation time is made. This is not allowed during a call.
+                """
+                return "xCommand Audio Diagnostics AecReverb Reset"
 
 class Audio:
-    pass
 
     class Diagnostics:
-        pass
-
+    
         class AecReverb:
-            pass
-
+        
             def Run():
-                pass
+                """
+                The command uses the acoustic echo canceller to give an estimate of the reverberation time in the room. This is done transparently, without interruption of the normal operation of the endpoint.
+                """
+                return "xCommand Audio Diagnostics AecReverb Run"
 
 class Audio:
-    pass
 
     class Microphones:
-        pass
-
+    
         def Mute():
-            pass
+            """
+            Mute all microphones.
+            """
+            return "xCommand Audio Microphones Mute"
 
 class Audio:
-    pass
 
     class Microphones:
-        pass
-
+    
         def ToggleMute():
-            pass
+            """
+            Toggle the microphone between muted and unmuted.
+            """
+            return "xCommand Audio Microphones ToggleMute"
 
 class Audio:
-    pass
 
     class Microphones:
-        pass
-
+    
         def Unmute():
-            pass
+            """
+            Unmute all microphones.
+            """
+            return "xCommand Audio Microphones Unmute"
 
 class Audio:
-    pass
 
     class Microphones:
-        pass
-
+    
         class MusicMode:
-            pass
-
+        
             def Start():
-                pass
+                """
+                Start using MusicMode in the current call. Music mode allows the dynamic range of music go through. When Music mode is in use, sound level variations are transmitted intact and the noise filtering is kept to a minimum. MusicMode is automatically turned off when the call ends.
+                """
+                return "xCommand Audio Microphones MusicMode Start"
 
 class Audio:
-    pass
 
     class Microphones:
-        pass
-
+    
         class MusicMode:
-            pass
-
+        
             def Stop():
-                pass
+                """
+                Stop using MusicMode in the current call.
+                """
+                return "xCommand Audio Microphones MusicMode Stop"
 
 class Audio:
-    pass
 
     class Microphones:
-        pass
-
+    
         class NoiseRemoval:
-            pass
-
+        
             def Activate():
-                pass
+                """
+                Activate noise removal on the device. For this to take effect, you need to enable xConfiguration Audio Microphones NoiseRemoval Mode to enable the noise removal feature on the device.
+                """
+                return "xCommand Audio Microphones NoiseRemoval Activate"
 
 class Audio:
-    pass
-
-    class Microphones:
-        pass
-
-        class NoiseRemoval:
-            pass
-
-            def Deactivate():
-                pass
-
-class Audio:
-    pass
-
-    class Microphones:
-        pass
-
-        class Passthrough:
-            pass
-
-            def Start():
-                pass
-
-class Audio:
-    pass
-
-    class Microphones:
-        pass
-
-        class Passthrough:
-            pass
-
-            def Stop():
-                pass
-
-class Audio:
-    pass
-
-    class Sound:
-        pass
-
-        def Play():
-            pass
-
-class Audio:
-    pass
-
-    class Sound:
-        pass
-
-        def Stop():
-            pass
-
-class Audio:
-    pass
-
-    class SoundsAndAlerts:
-        pass
-
-        class Ringtone:
-            pass
-
-            def List():
-                pass
-
-class Audio:
-    pass
-
-    class SoundsAndAlerts:
-        pass
-
-        class Ringtone:
-            pass
-
-            def Play():
-                pass
-
-class Audio:
-    pass
-
-    class SoundsAndAlerts:
-        pass
-
-        class Ringtone:
-            pass
-
-            def Stop():
-                pass
-
-class Audio:
-    pass
 
     class Volume:
-        pass
-
-        def Decrease():
-            pass
-
-class Audio:
-    pass
-
-    class Volume:
-        pass
-
-        def Increase():
-            pass
-
-class Audio:
-    pass
-
-    class Volume:
-        pass
-
-        def Mute():
-            pass
-
-class Audio:
-    pass
-
-    class Volume:
-        pass
-
-        def Set():
-            pass
-
-class Audio:
-    pass
-
-    class Volume:
-        pass
-
+    
         def SetToDefault():
-            pass
+            """
+            Set the volume on one of the video conferencing device's audio units (built-in loudspeakers, headsets, or handset) to the default level as defined in the xConfiguration Audio DefaultVolume setting. You can use the optional Device parameter to specify which audio unit to address. The most recently selected unit is chosen if you don't specify a unit (see xStatus Audio SelectedDevice). Also refer to xCommand Audio Select.
+            """
+            return "xCommand Audio Volume SetToDefault"
 
 class Audio:
-    pass
 
-    class Volume:
-        pass
-
-        def ToggleMute():
-            pass
-
-class Audio:
-    pass
-
-    class Volume:
-        pass
-
-        def Unmute():
-            pass
+    class Microphones:
+    
+        class Passthrough:
+        
+            def Start():
+                """
+                
+                """
+                return "xCommand Audio Microphones Passthrough Start"
 
 class Audio:
-    pass
 
-    class VuMeter:
-        pass
-
-        def Start():
-            pass
+    class Microphones:
+    
+        class Passthrough:
+        
+            def Stop():
+                """
+                
+                """
+                return "xCommand Audio Microphones Passthrough Stop"
 
 class Audio:
-    pass
 
-    class VuMeter:
-        pass
+    class Sound:
+    
+        def Play():
+            """
+            Play a specified audio sound.
+            """
+            return "xCommand Audio Sound Play"
 
+class Audio:
+
+    class Sound:
+    
         def Stop():
-            pass
+            """
+            Stop playing audio sound.
+            """
+            return "xCommand Audio Sound Stop"
 
 class Audio:
-    pass
+
+    class SoundsAndAlerts:
+    
+        class Ringtone:
+        
+            def List():
+                """
+                List all available ringtones. Use the xConfiguration Audio SoundsAndAlerts RingTone setting to choose a ringtone.
+                """
+                return "xCommand Audio SoundsAndAlerts Ringtone List"
+
+class Audio:
+
+    class SoundsAndAlerts:
+    
+        class Ringtone:
+        
+            def Play():
+                """
+                Play one of the available ringtones. Use the xCommand Audio SoundsAndAlerts Ringtone List command to get a list of the available ringtones.
+                """
+                return "xCommand Audio SoundsAndAlerts Ringtone Play"
+
+class Audio:
+
+    class SoundsAndAlerts:
+    
+        class Ringtone:
+        
+            def Stop():
+                """
+                Stops the chosen ringtone from playing. To start playing the ringtone again, use the Audio SoundsAndAlerts Ringtone Play xCommand.
+                """
+                return "xCommand Audio SoundsAndAlerts Ringtone Stop"
+
+class Audio:
+
+    class Volume:
+    
+        def Decrease():
+            """
+            Decrease the volume on one of the video conferencing device's audio units (built-in loudspeakers, headsets, or handset). By default, the volume is decreased by 5 steps (each step is 0.5 dB). Use the Steps parameter if you want to override the default behavior. You can use the optional Device parameter to specify which audio unit to address. The most recently selected unit is chosen if you don't specify a unit (see xStatus Audio SelectedDevice). Also refer to xCommand Audio Select.
+            """
+            return "xCommand Audio Volume Decrease"
+
+class Audio:
+
+    class Volume:
+    
+        def Increase():
+            """
+            Increase the volume on one of the video conferencing device's audio units (built-in loudspeakers, headsets, or handset). By default, the volume is increased by 5 steps (each step is 0.5 dB). Use the Steps parameter if you want to override the default behavior. You can use the optional Device parameter to specify which audio unit to address. The most recently selected unit is chosen if you don't specify a unit (see xStatus Audio SelectedDevice). Also refer to xCommand Audio Select.
+            """
+            return "xCommand Audio Volume Increase"
+
+class Audio:
+
+    class Volume:
+    
+        def Mute():
+            """
+            Mute the volume on the selected audio unit (built-in loudspeakers, headsets, or handset). Refer to the xStatus Audio SelectedDevice and xCommand Audio Select commands for more information about the selected audio unit.
+            """
+            return "xCommand Audio Volume Mute"
+
+class Audio:
+
+    class Volume:
+    
+        def Set():
+            """
+            Set the volume on one of the video conferencing device's audio units (built-in loudspeakers, headsets, or handset) to a specified level. You can use the optional Device parameter to specify which audio unit to address. The most recently selected unit is chosen if you don't specify a unit (see xStatus Audio SelectedDevice). Also refer to xCommand Audio Select.
+            """
+            return "xCommand Audio Volume Set"
+
+class Audio:
+
+    class Volume:
+    
+        def SetToDefault():
+            """
+            Set the volume on one of the video conferencing device's audio units (built-in loudspeakers, headsets, or handset) to the default level as defined in the xConfiguration Audio DefaultVolume setting. You can use the optional Device parameter to specify which audio unit to address. The most recently selected unit is chosen if you don't specify a unit (see xStatus Audio SelectedDevice). Also refer to xCommand Audio Select.
+            """
+            return "xCommand Audio Volume SetToDefault"
+
+class Audio:
+
+    class Volume:
+    
+        def ToggleMute():
+            """
+            Toggle the loudspeaker between muted and unmuted.
+            """
+            return "xCommand Audio Volume ToggleMute"
+
+class Audio:
+
+    class Volume:
+    
+        def Unmute():
+            """
+            Set the volume on the device back on after muting.
+            """
+            return "xCommand Audio Volume Unmute"
+
+class Audio:
 
     class VuMeter:
-        pass
+    
+        def Start():
+            """
+            Start a VU meter to measure the audio signal level on the specified connector. You must specify both the connector's type and number (ConnectorType, ConnectorId) to uniquely identify the connector and behavior. The VU meter measures the input level for frequencies below 20 kHz. You can monitor the measured signal levels on the device's local web interface (Settings > Audio and Video), or you can use the xFeedback and xEvents commands.
+            """
+            return "xCommand Audio VuMeter Start"
 
+class Audio:
+
+    class VuMeter:
+    
+        def Stop():
+            """
+            Stop the VU meter on the specified connector. You must specify both the connector's type and number (ConnectorType, ConnectorId) to uniquely identify the connector.
+            """
+            return "xCommand Audio VuMeter Stop"
+
+class Audio:
+
+    class VuMeter:
+    
         def StopAll():
-            pass
+            """
+            Stop all VU meters.
+            """
+            return "xCommand Audio VuMeter StopAll"
 
 class Bookings:
-    pass
 
     def Book():
-        pass
+        """
+        Book the meeting room for the specified period. If you don’t specify the start time and duration, the room will be booked from now on and for 30 minutes. This command is only available for devices that support the room scheduling feature, refer to the RoomScheduler Enabled setting.
+        """
+        return "xCommand Bookings Book"
 
 class Bookings:
-    pass
 
     def Clear():
-        pass
+        """
+        Clear the current stored list of bookings.
+        """
+        return "xCommand Bookings Clear"
 
 class Bookings:
-    pass
 
     def Delete():
-        pass
+        """
+        Remove the meeting that is identified by the MeetingId parameter. Then the room becomes available for new bookings. This command is only available for devices that support the room scheduling feature, refer to the RoomScheduler Enabled setting.
+        """
+        return "xCommand Bookings Delete"
 
 class Bookings:
-    pass
 
     def Get():
-        pass
+        """
+        Get the booking information for a specific ID.
+        """
+        return "xCommand Bookings Get"
 
 class Bookings:
-    pass
 
     def List():
-        pass
+        """
+        List the stored bookings for the device. The list of booking details is received from the management system. All parameters are optional and can be used to limit the search result. If no parameters are set, past, present and future bookings are all listed. To avoid listing bookings from yesterday and before, use DayOffset = 0.
+        """
+        return "xCommand Bookings List"
 
 class Bookings:
-    pass
 
     def NotificationSnooze():
-        pass
+        """
+        Sets notifications for the stored bookings in this device to snooze.
+        """
+        return "xCommand Bookings NotificationSnooze"
 
 class Bookings:
-    pass
-
-    class Put:
-        pass
-
-        class Raw:
-            pass
-
-            class data:
-                pass
-
-                class here...:
-                    pass
-
-                    class Must:
-                        pass
-
-                        class end:
-                            pass
-
-                            class with:
-                                pass
-
-                                class line:
-                                    pass
-
-                                    class with:
-                                        pass
-
-                                        class single:
-                                            pass
-
-                                            class dot:
-                                                pass
-
-                                                def .():
-                                                    pass
-
-class Bookings:
-    pass
-
-    def Respond():
-        pass
-
-class Call:
-    pass
-
-    def Accept():
-        pass
-
-class Call:
-    pass
-
-    def DTMFSend():
-        pass
-
-class Call:
-    pass
-
-    def Disconnect():
-        pass
-
-class Call:
-    pass
-
-    def Forward():
-        pass
-
-class Call:
-    pass
-
-    def Hold():
-        pass
-
-class Call:
-    pass
-
-    def Ignore():
-        pass
-
-class Call:
-    pass
-
-    def Join():
-        pass
-
-class Call:
-    pass
-
-    def Reject():
-        pass
-
-class Call:
-    pass
-
-    def Resume():
-        pass
-
-class Call:
-    pass
-
-    def UnattendedTransfer():
-        pass
-
-class Call:
-    pass
-
-    class FarEndControl:
-        pass
-
-        def RequestCapabilities():
-            pass
-
-class Call:
-    pass
-
-    class FarEndControl:
-        pass
-
-        class Camera:
-            pass
-
-            def Move():
-                pass
-
-class Call:
-    pass
-
-    class FarEndControl:
-        pass
-
-        class Camera:
-            pass
-
-            def Stop():
-                pass
-
-class Call:
-    pass
-
-    class FarEndControl:
-        pass
-
-        class RoomPreset:
-            pass
-
-            def Activate():
-                pass
-
-class Call:
-    pass
-
-    class FarEndControl:
-        pass
-
-        class RoomPreset:
-            pass
-
-            def Store():
-                pass
-
-class Call:
-    pass
-
-    class FarEndControl:
-        pass
-
-        class Source:
-            pass
-
-            def Select():
-                pass
-
-class Call:
-    pass
-
-    class FarEndMessage:
-        pass
-
-        def Send():
-            pass
-
-class CallHistory:
-    pass
-
-    def AcknowledgeAllMissedCalls():
-        pass
-
-class CallHistory:
-    pass
-
-    def AcknowledgeMissedCall():
-        pass
-
-class CallHistory:
-    pass
-
-    def DeleteAll():
-        pass
-
-class CallHistory:
-    pass
-
-    def DeleteEntry():
-        pass
-
-class CallHistory:
-    pass
-
-    def Get():
-        pass
-
-class CallHistory:
-    pass
-
-    def Recents():
-        pass
-
-class Camera:
-    pass
-
-    def PositionSet():
-        pass
-
-class Camera:
-    pass
-
-    def Ramp():
-        pass
-
-class Camera:
-    pass
-
-    class Preset:
-        pass
-
-        def Activate():
-            pass
-
-class Camera:
-    pass
-
-    class Preset:
-        pass
-
-        def ActivateDefaultPosition():
-            pass
-
-class Camera:
-    pass
-
-    class Preset:
-        pass
-
-        def Edit():
-            pass
-
-class Camera:
-    pass
-
-    class Preset:
-        pass
-
-        def List():
-            pass
-
-class Camera:
-    pass
-
-    class Preset:
-        pass
-
-        def Remove():
-            pass
-
-class Camera:
-    pass
-
-    class Preset:
-        pass
-
-        def Show():
-            pass
-
-class Camera:
-    pass
-
-    class Preset:
-        pass
-
-        def Store():
-            pass
-
-class Cameras:
-    pass
-
-    class SpeakerTrack:
-        pass
-
-        def Activate():
-            pass
-
-class Cameras:
-    pass
-
-    class SpeakerTrack:
-        pass
-
-        def Deactivate():
-            pass
-
-class Cameras:
-    pass
-
-    class SpeakerTrack:
-        pass
-
-        class BackgroundMode:
-            pass
-
-            def Activate():
-                pass
-
-class Cameras:
-    pass
-
-    class SpeakerTrack:
-        pass
-
-        class BackgroundMode:
-            pass
-
-            def Deactivate():
-                pass
-
-class Cameras:
-    pass
-
-    class SpeakerTrack:
-        pass
-
-        class Diagnostics:
-            pass
-
-            def Start():
-                pass
-
-class Cameras:
-    pass
-
-    class SpeakerTrack:
-        pass
-
-        class Diagnostics:
-            pass
-
-            def Stop():
-                pass
-
-class Cameras:
-    pass
-
-    class SpeakerTrack:
-        pass
-
-        class ViewLimits:
-            pass
-
-            def Activate():
-                pass
-
-class Cameras:
-    pass
-
-    class SpeakerTrack:
-        pass
-
-        class ViewLimits:
-            pass
-
-            def Deactivate():
-                pass
-
-class Cameras:
-    pass
-
-    class SpeakerTrack:
-        pass
-
-        class ViewLimits:
-            pass
-
-            def StorePosition():
-                pass
-
-class Cameras:
-    pass
-
-    class SpeakerTrack:
-        pass
-
-        class Whiteboard:
-            pass
-
-            def ActivatePosition():
-                pass
-
-class Cameras:
-    pass
-
-    class SpeakerTrack:
-        pass
-
-        class Whiteboard:
-            pass
-
-            def SetDistance():
-                pass
-
-class Cameras:
-    pass
-
-    class SpeakerTrack:
-        pass
-
-        class Whiteboard:
-            pass
-
-            def StorePosition():
-                pass
-
-class Conference:
-    pass
-
-    def AdmitAll():
-        pass
-
-class Conference:
-    pass
-
-    def EndMeeting():
-        pass
-
-class Conference:
-    pass
-
-    def HardMute():
-        pass
-
-class Conference:
-    pass
-
-    def Lock():
-        pass
-
-class Conference:
-    pass
-
-    def LowerAllHands():
-        pass
-
-class Conference:
-    pass
-
-    def MuteAll():
-        pass
-
-class Conference:
-    pass
-
-    def MuteOnEntry():
-        pass
-
-class Conference:
-    pass
-
-    def TransferHostAndLeave():
-        pass
-
-class Conference:
-    pass
-
-    class Call:
-        pass
-
-        def AuthenticationResponse():
-            pass
-
-class Conference:
-    pass
-
-    class DoNotDisturb:
-        pass
-
-        def Activate():
-            pass
-
-class Conference:
-    pass
-
-    class DoNotDisturb:
-        pass
-
-        def Deactivate():
-            pass
-
-class Conference:
-    pass
-
-    class Hand:
-        pass
-
-        def Lower():
-            pass
-
-class Conference:
-    pass
-
-    class Hand:
-        pass
-
-        def Raise():
-            pass
-
-class Conference:
-    pass
-
-    class MeetingAssistant:
-        pass
-
-        def Start():
-            pass
-
-class Conference:
-    pass
-
-    class MeetingAssistant:
-        pass
-
-        def Stop():
-            pass
-
-class Conference:
-    pass
-
-    class Participant:
-        pass
-
-        def Admit():
-            pass
-
-class Conference:
-    pass
-
-    class Participant:
-        pass
-
-        def Disconnect():
-            pass
-
-class Conference:
-    pass
-
-    class Participant:
-        pass
-
-        def LowerHand():
-            pass
-
-class Conference:
-    pass
-
-    class Participant:
-        pass
-
-        def Mute():
-            pass
-
-class Conference:
-    pass
-
-    class ParticipantList:
-        pass
-
-        def Search():
-            pass
-
-class Conference:
-    pass
-
-    class Reaction:
-        pass
-
-        def Disable():
-            pass
-
-class Conference:
-    pass
-
-    class Reaction:
-        pass
-
-        def Enable():
-            pass
-
-class Conference:
-    pass
-
-    class Reaction:
-        pass
-
-        def Send():
-            pass
-
-class Conference:
-    pass
-
-    class Reaction:
-        pass
-
-        def Tone():
-            pass
-
-class Conference:
-    pass
-
-    class Recording:
-        pass
-
-        def Pause():
-            pass
-
-class Conference:
-    pass
-
-    class Recording:
-        pass
-
-        def Resume():
-            pass
-
-class Conference:
-    pass
-
-    class Recording:
-        pass
-
-        def Start():
-            pass
-
-class Conference:
-    pass
-
-    class Recording:
-        pass
-
-        def Stop():
-            pass
-
-class Conference:
-    pass
-
-    class SpeakerLock:
-        pass
-
-        def Release():
-            pass
-
-class Conference:
-    pass
-
-    class SpeakerLock:
-        pass
-
-        def Set():
-            pass
-
-class Diagnostics:
-    pass
-
-    def Run():
-        pass
-
-class HttpClient:
-    pass
-
-    def Delete():
-        pass
-
-class HttpClient:
-    pass
-
-    def Get():
-        pass
-
-class HttpClient:
-    pass
-
-    def Patch():
-        pass
-
-class HttpClient:
-    pass
-
-    def Post():
-        pass
-
-class HttpClient:
-    pass
 
     def Put():
-        pass
+        """
+        This command applies to devices that are either registered to the Webex cloud service or registered to an on-premises service and linked to Webex Edge for Devices. NOTE: This API has special terms and conditions, please refer to the “About the API – Terms and Conditions” section in the API guide. Replace the list of stored bookings. This is a multiline command, with details of the stored bookings as payload. The meeting information is provided in JSON format. For example: { "Bookings": [ { ...
+        """
+        return "xCommand Bookings Put"
 
-class HttpClient:
-    pass
+class Bookings:
 
-    class Allow:
-        pass
+    def Respond():
+        """
+        Accept or decline a meeting invitation. This command applies to devices that are either registered to the Webex cloud service or registered to an on-premises service and linked to Webex Edge for Devices.
+        """
+        return "xCommand Bookings Respond"
 
-        class Hostname:
-            pass
+class Call:
 
-            def Add():
-                pass
+    def Accept():
+        """
+        Accept an incoming call. If no CallId is specified, all incoming calls are accepted.
+        """
+        return "xCommand Call Accept"
 
-class HttpClient:
-    pass
+class Call:
 
-    class Allow:
-        pass
+    def DTMFSend():
+        """
+        Send DTMF tones to the far end.
+        """
+        return "xCommand Call DTMFSend"
 
-        class Hostname:
-            pass
+class Call:
 
-            def Clear():
-                pass
+    def Disconnect():
+        """
+        Disconnect a call. If no CallId is specified, the currently active call will be disconnected.
+        """
+        return "xCommand Call Disconnect"
 
-class HttpClient:
-    pass
+class Call:
 
-    class Allow:
-        pass
+    def Forward():
+        """
+        Specifies what number or URI you want to forward your incoming calls to. The display name is a local reference for the forwarded destination. A message, together with the local reference, is shown on screen when you have configured the device to forward all calls.
+        """
+        return "xCommand Call Forward"
 
-        class Hostname:
-            pass
+class Call:
 
-            def List():
-                pass
+    def Hold():
+        """
+        Put a call on hold.
+        """
+        return "xCommand Call Hold"
 
-class HttpClient:
-    pass
+class Call:
 
-    class Allow:
-        pass
+    def Ignore():
+        """
+        Turns off the ringtone for the incoming call. The call can still be answered.
+        """
+        return "xCommand Call Ignore"
 
-        class Hostname:
-            pass
+class Call:
 
-            def Remove():
-                pass
+    def Join():
+        """
+        Cisco internal use only.
+        """
+        return "xCommand Call Join"
 
-class HttpFeedback:
-    pass
+class Call:
 
-    def Deregister():
-        pass
+    def Reject():
+        """
+        Reject incoming call. If no call id is specified, all incoming calls are rejected.
+        """
+        return "xCommand Call Reject"
 
-class HttpFeedback:
-    pass
+class Call:
 
-    def Enable():
-        pass
+    def Resume():
+        """
+        Resume a call that have been put on hold.
+        """
+        return "xCommand Call Resume"
 
-class HttpFeedback:
-    pass
+class Call:
 
-    def Register():
-        pass
+    def UnattendedTransfer():
+        """
+        Transfers an ongoing call to another participant. Fully supported for SIP calls only.
+        """
+        return "xCommand Call UnattendedTransfer"
 
-class Logging:
-    pass
+class Call:
 
-    def SendLogs():
-        pass
+    class FarEndControl:
+    
+        def RequestCapabilities():
+            """
+            Send a request to find out what capabilities a far end camera has for remote control. This command can be issued from a device that is participating in a call and can be used to control the camera of another device within the same call. For on-premises and CMS, this command accesses the camera of the active speaker. For cloud, this command accesses the camera of the specified participant. An additional constraint is that you cannot control the camera of a cloud-based personal mode device. This i...
+            """
+            return "xCommand Call FarEndControl RequestCapabilities"
 
-class Logging:
-    pass
+class Call:
 
-    class ExtendedLogging:
-        pass
+    class FarEndControl:
+    
+        class Camera:
+        
+            def Move():
+                """
+                Move the far end camera (the remote camera). This command can be issued from a device that is participating in a call and can be used to control the camera of another device within the same call. Speakertrack must be disabled on the far end camera. Once the Move command is issued, the far end camera will continue to move in the specified direction until the stop command (ref: xCommand FarEndControl Camera Stop) is issued. For on-premises and CMS, this command accesses the camera of the active sp...
+                """
+                return "xCommand Call FarEndControl Camera Move"
 
-        def Start():
-            pass
+class Call:
 
-class Logging:
-    pass
+    class FarEndControl:
+    
+        class Camera:
+        
+            def Stop():
+                """
+                Stop the far end camera after the xCommand FarEndControl Camera Move has been issued. This command can be issued from a device that is participating in a call and can be used to control the camera of another device within the same call. Speakertrack must be disabled on the far end camera. For on-premises and CMS, this command accesses the camera of the active speaker. For cloud, this command accesses the camera of the specified participant. An additional constraint is that you cannot control the...
+                """
+                return "xCommand Call FarEndControl Camera Stop"
 
-    class ExtendedLogging:
-        pass
+class Call:
 
-        def Stop():
-            pass
+    class FarEndControl:
+    
+        class RoomPreset:
+        
+            def Activate():
+                """
+                While in a call, this command is used to activate a preset on the far end device. The preset covers the far end device's camera positions and input video switcher settings. The preset must be stored on the far end device beforehand, either by using the xCommand Preset Store command locally on the far end device, or by using the xCommand FarEndControl Preset Store command from a remote device. Note: The far end device's xConfiguration Conference FarEndControl Mode setting must be switched On for ...
+                """
+                return "xCommand Call FarEndControl RoomPreset Activate"
 
-class Macros:
-    pass
+class Call:
 
-    class Log:
-        pass
+    class FarEndControl:
+    
+        class RoomPreset:
+        
+            def Store():
+                """
+                While in a call, this command is used to store a preset on the far end device. The preset covers the far end device's camera positions and input video switcher settings. Note: The far end device's xConfiguration Conference FarEndControl Mode setting must be switched On for the FarEndControl commands to work.
+                """
+                return "xCommand Call FarEndControl RoomPreset Store"
 
-        def Clear():
-            pass
+class Call:
 
-class Macros:
-    pass
+    class FarEndControl:
+    
+        class Source:
+        
+            def Select():
+                """
+                Select which video input source to use as the main source on the far end device. This command can be issued from a device that is participating in a call and can be used to select the source for another device within the same call. For on-premises and CMS, this command selects the source for the active speaker. For cloud, this command selects the source of the specified participant. An additional constraint is that you cannot control the source of a cloud-based personal mode device. This is for ...
+                """
+                return "xCommand Call FarEndControl Source Select"
 
-    class Log:
-        pass
+class Call:
 
-        def Get():
-            pass
+    class FarEndMessage:
+    
+        def Send():
+            """
+            Send data between two codecs in a point-to-point call, for use with control systems or macros. Works with SIP calls only. Requires that the Conference FarEndMessage Mode is set to On.
+            """
+            return "xCommand Call FarEndMessage Send"
 
-class Macros:
-    pass
+class CallHistory:
 
-    class Macro:
-        pass
+    def AcknowledgeAllMissedCalls():
+        """
+        Turns off the missed calls indicator on the touch controller for all missed calls.
+        """
+        return "xCommand CallHistory AcknowledgeAllMissedCalls"
 
+class CallHistory:
+
+    def AcknowledgeMissedCall():
+        """
+        Turns off the missed calls indicator on the touch controller for the specified call.
+        """
+        return "xCommand CallHistory AcknowledgeMissedCall"
+
+class CallHistory:
+
+    def DeleteAll():
+        """
+        Deletes all information on previous calls.
+        """
+        return "xCommand CallHistory DeleteAll"
+
+class CallHistory:
+
+    def DeleteEntry():
+        """
+        Deletes all information on the specified call.
+        """
+        return "xCommand CallHistory DeleteEntry"
+
+class CallHistory:
+
+    def Get():
+        """
+        Retrieve all information on previous calls made on the device.
+        """
+        return "xCommand CallHistory Get"
+
+class CallHistory:
+
+    def Recents():
+        """
+        Retrieve aggregated information on previous calls made on the device.
+        """
+        return "xCommand CallHistory Recents"
+
+class Camera:
+
+    def PositionSet():
+        """
+        Set the camera position. If the combination of the pan, tilt, zoom, and roll values is not possible, the camera automatically adjusts the values to a valid combination.
+        """
+        return "xCommand Camera PositionSet"
+
+class Camera:
+
+    def Ramp():
+        """
+        Move the camera in a specified direction. The camera moves at specified speed until a stop command is issued. In a daisy chain, you need to know the CameraId for the camera you want to address. Be aware that pan and tilt can be operated simultaneously, but no other combinations. In the latter case only the first operation specified is executed. For example, if you try to run both zoom and pan at the same time, only zoom is executed. NOTE: You must run a stop command to stop the camera, see the e...
+        """
+        return "xCommand Camera Ramp"
+
+class Camera:
+
+    class Preset:
+    
         def Activate():
-            pass
+            """
+            Activate one of the stored camera presets. This command has no effect on speaker tracking. If speaker tracking is on, it will continue from the preset position. Note that the xCommand Camera Preset commands applies to an individual camera.
+            """
+            return "xCommand Camera Preset Activate"
 
-class Macros:
-    pass
+class Camera:
 
-    class Macro:
-        pass
+    class Preset:
+    
+        def ActivateDefaultPosition():
+            """
+            Sets the cameras to their default position, if one is defined. The default position is defined by xCommand Camera Preset Store or by xCommand Camera Preset Edit. Only one default position can be defined per camera. This command has no effect on speaker tracking. If speaker tracking is on, it will continue from the preset position.
+            """
+            return "xCommand Camera Preset ActivateDefaultPosition"
 
-        def Deactivate():
-            pass
+class Camera:
 
-class Macros:
-    pass
+    class Preset:
+    
+        def Edit():
+            """
+            Edit a stored camera preset. You can change the name of the camera preset and its position in the list that is returned by the xCommand Camera Preset List command. You can also change whether or not this preset is the default position for the associated camera. Note that the xCommand Camera Preset commands applies to an individual camera.
+            """
+            return "xCommand Camera Preset Edit"
 
-    class Macro:
-        pass
+class Camera:
 
-        def Get():
-            pass
-
-class Macros:
-    pass
-
-    class Macro:
-        pass
-
-        def Remove():
-            pass
-
-class Macros:
-    pass
-
-    class Macro:
-        pass
-
-        def RemoveAll():
-            pass
-
-class Macros:
-    pass
-
-    class Macro:
-        pass
-
-        def Rename():
-            pass
-
-class Macros:
-    pass
-
-    class Macro:
-        pass
-
-        def Save():
-            pass
-
-class Macros:
-    pass
-
-    class Macro:
-        pass
-
-        class Roles:
-            pass
-
-            def Set():
-                pass
-
-class Macros:
-    pass
-
-    class Runtime:
-        pass
-
-        def Restart():
-            pass
-
-class Macros:
-    pass
-
-    class Runtime:
-        pass
-
-        def Start():
-            pass
-
-class Macros:
-    pass
-
-    class Runtime:
-        pass
-
-        def Status():
-            pass
-
-class Macros:
-    pass
-
-    class Runtime:
-        pass
-
-        def Stop():
-            pass
-
-class Message:
-    pass
-
-    def Send():
-        pass
-
-class Network:
-    pass
-
-    class SNMP:
-        pass
-
-        class USM:
-            pass
-
-            class User:
-                pass
-
-                def Add():
-                    pass
-
-class Network:
-    pass
-
-    class SNMP:
-        pass
-
-        class USM:
-            pass
-
-            class User:
-                pass
-
-                def Delete():
-                    pass
-
-class Network:
-    pass
-
-    class SNMP:
-        pass
-
-        class USM:
-            pass
-
-            class User:
-                pass
-
-                def List():
-                    pass
-
-class Network:
-    pass
-
-    class Wifi:
-        pass
-
-        def Configure():
-            pass
-
-class Network:
-    pass
-
-    class Wifi:
-        pass
-
-        def Delete():
-            pass
-
-class Network:
-    pass
-
-    class Wifi:
-        pass
-
+    class Preset:
+    
         def List():
-            pass
-
-class Network:
-    pass
-
-    class Wifi:
-        pass
-
-        class Scan:
-            pass
-
-            def Start():
-                pass
-
-class Network:
-    pass
-
-    class Wifi:
-        pass
-
-        class Scan:
-            pass
-
-            def Stop():
-                pass
-
-class Peripherals:
-    pass
-
-    def Connect():
-        pass
-
-class Peripherals:
-    pass
-
-    def HeartBeat():
-        pass
-
-class Peripherals:
-    pass
-
-    def List():
-        pass
-
-class Peripherals:
-    pass
-
-    def Purge():
-        pass
-
-class Peripherals:
-    pass
-
-    class Pairing:
-        pass
-
-        def Pair():
-            pass
-
-class Peripherals:
-    pass
-
-    class Pairing:
-        pass
-
-        def Unpair():
-            pass
-
-class Peripherals:
-    pass
-
-    class Pairing:
-        pass
-
-        class PinPairing:
-            pass
-
-            def Start():
-                pass
-
-class Peripherals:
-    pass
-
-    class Pairing:
-        pass
-
-        class PinPairing:
-            pass
-
-            def Stop():
-                pass
-
-class Peripherals:
-    pass
-
-    class TouchPanel:
-        pass
-
-        def Configure():
-            pass
-
-class Phonebook:
-    pass
-
-    def Search():
-        pass
-
-class Phonebook:
-    pass
-
-    class Contact:
-        pass
-
-        def Add():
-            pass
-
-class Phonebook:
-    pass
-
-    class Contact:
-        pass
-
-        def Delete():
-            pass
-
-class Phonebook:
-    pass
-
-    class Contact:
-        pass
-
-        def Modify():
-            pass
-
-class Phonebook:
-    pass
-
-    class ContactMethod:
-        pass
-
-        def Add():
-            pass
-
-class Phonebook:
-    pass
-
-    class ContactMethod:
-        pass
-
-        def Delete():
-            pass
-
-class Phonebook:
-    pass
-
-    class ContactMethod:
-        pass
-
-        def Modify():
-            pass
-
-class Phonebook:
-    pass
-
-    class Folder:
-        pass
-
-        def Add():
-            pass
-
-class Phonebook:
-    pass
-
-    class Folder:
-        pass
-
-        def Delete():
-            pass
-
-class Phonebook:
-    pass
-
-    class Folder:
-        pass
-
-        def Modify():
-            pass
-
-class Presentation:
-    pass
-
-    def Start():
-        pass
-
-class Presentation:
-    pass
-
-    def Stop():
-        pass
-
-class Provisioning:
-    pass
-
-    def CompleteUpgrade():
-        pass
-
-class Provisioning:
-    pass
-
-    def PostponeUpgrade():
-        pass
-
-class Provisioning:
-    pass
-
-    class CUCM:
-        pass
-
-        class ExtensionMobility:
-            pass
-
-            def Login():
-                pass
-
-class Provisioning:
-    pass
-
-    class CUCM:
-        pass
-
-        class ExtensionMobility:
-            pass
-
-            def Logout():
-                pass
-
-class Provisioning:
-    pass
-
-    class Service:
-        pass
-
-        def Fetch():
-            pass
-
-class Proximity:
-    pass
-
-    class Services:
-        pass
-
+            """
+            List information about available camera presets. Note that the xCommand Camera Preset commands applies to an individual camera.
+            """
+            return "xCommand Camera Preset List"
+
+class Camera:
+
+    class Preset:
+    
+        def Remove():
+            """
+            Remove a camera preset. Note that the xCommand Camera Preset commands applies to an individual camera.
+            """
+            return "xCommand Camera Preset Remove"
+
+class Camera:
+
+    class Preset:
+    
+        def Show():
+            """
+            Shows the preset details for the requested PresetId.
+            """
+            return "xCommand Camera Preset Show"
+
+class Camera:
+
+    class Preset:
+    
+        def Store():
+            """
+            Store the current position (pan and tilt), zoom and focus of the chosen camera. The camera is identified by the CameraId parameter. Note that the xCommand Camera Preset commands applies to an individual camera. The xCommand Camera Preset commands are useful when you want to handle multiple camera positions individually per camera, rather than working with complete sets of camera positions. The individual camera presets are not available for far end control.
+            """
+            return "xCommand Camera Preset Store"
+
+class Cameras:
+
+    class SpeakerTrack:
+    
         def Activate():
-            pass
+            """
+            Activate SpeakerTrack mode. Requires that xConfiguration Cameras SpeakerTrack Mode is set to Auto (default).
+            """
+            return "xCommand Cameras SpeakerTrack Activate"
 
-class Proximity:
-    pass
+class Cameras:
 
-    class Services:
-        pass
-
+    class SpeakerTrack:
+    
         def Deactivate():
-            pass
+            """
+            Deactivate SpeakerTrack mode.
+            """
+            return "xCommand Cameras SpeakerTrack Deactivate"
 
-class RoomCleanup:
-    pass
+class Cameras:
 
-    def Cancel():
-        pass
+    class SpeakerTrack:
+    
+        class BackgroundMode:
+        
+            def Activate():
+                """
+                
+                """
+                return "xCommand Cameras SpeakerTrack BackgroundMode Activate"
 
-class RoomCleanup:
-    pass
+class Cameras:
+
+    class SpeakerTrack:
+    
+        class BackgroundMode:
+        
+            def Deactivate():
+                """
+                
+                """
+                return "xCommand Cameras SpeakerTrack BackgroundMode Deactivate"
+
+class Cameras:
+
+    class SpeakerTrack:
+    
+        class Diagnostics:
+        
+            def Start():
+                """
+                Starts diagnostics on the camera's speaker tracking.
+                """
+                return "xCommand Cameras SpeakerTrack Diagnostics Start"
+
+class Cameras:
+
+    class SpeakerTrack:
+    
+        class Diagnostics:
+        
+            def Stop():
+                """
+                Stops diagnostics on the camera's tracking.
+                """
+                return "xCommand Cameras SpeakerTrack Diagnostics Stop"
+
+class Cameras:
+
+    class SpeakerTrack:
+    
+        class ViewLimits:
+        
+            def Activate():
+                """
+                Start using the limited maximum camera view for speaker tracking (see the Cameras SpeakerTrack ViewLimits StorePosition command). The full camera range is always available for manual camera control.
+                """
+                return "xCommand Cameras SpeakerTrack ViewLimits Activate"
+
+class Cameras:
+
+    class SpeakerTrack:
+    
+        class ViewLimits:
+        
+            def Deactivate():
+                """
+                Stop using the limited maximum camera view for speaker tracking (see the Cameras SpeakerTrack ViewLimits StorePosition command). The fully zoomed-out camera view will be used instead.
+                """
+                return "xCommand Cameras SpeakerTrack ViewLimits Deactivate"
+
+class Cameras:
+
+    class SpeakerTrack:
+    
+        class ViewLimits:
+        
+            def StorePosition():
+                """
+                Store the current camera view as the maximum view (room overview) for speaker tracking. This way you can limit the default maximum view to exclude parts of the room. If you don't set a limit, the maximum view for speaker tracking is the fully zoomed-out camera view.
+                """
+                return "xCommand Cameras SpeakerTrack ViewLimits StorePosition"
+
+class Cameras:
+
+    class SpeakerTrack:
+    
+        class Whiteboard:
+        
+            def ActivatePosition():
+                """
+                Moves the specified camera to the position stored with xCommand Cameras SpeakerTrack Whiteboard StorePosition.
+                """
+                return "xCommand Cameras SpeakerTrack Whiteboard ActivatePosition"
+
+class Cameras:
+
+    class SpeakerTrack:
+    
+        class Whiteboard:
+        
+            def SetDistance():
+                """
+                Set the cameras distance to the whiteboard. This information is needed by the camera to frame the whiteboard automatically.
+                """
+                return "xCommand Cameras SpeakerTrack Whiteboard SetDistance"
+
+class Cameras:
+
+    class SpeakerTrack:
+    
+        class Whiteboard:
+        
+            def StorePosition():
+                """
+                Store the position of the specified camera as the Snap to Whiteboard position. Frame the image so that there is room around the whiteboard for the speaker. To use the Snap to Whiteboard feature it must be enabled with xConfiguration Cameras SpeakerTrack Whiteboard Mode and tracking must be enabled with xConfiguration Cameras SpeakerTrack Mode.
+                """
+                return "xCommand Cameras SpeakerTrack Whiteboard StorePosition"
+
+class Conference:
+
+    def AdmitAll():
+        """
+        Lets into the call or meeting all participants who are waiting in the virtual lobby. Available for Hosts and Cohosts of Webex meetings. The device must either be registered to the Webex cloud service or linked to Webex Edge for Devices. Participants waiting to be admitted have the status "waiting" in the result from the Conference ParticipantList Search command (*r ParticipantListSearchResult Participant [n] Status = "waiting").
+        """
+        return "xCommand Conference AdmitAll"
+
+class Conference:
+
+    def EndMeeting():
+        """
+        Ends meeting for all participants. The command is available for Hosts and Cohosts of Webex meetings. The device must either be registered to the Webex cloud service or linked to Webex Edge for Devices.
+        """
+        return "xCommand Conference EndMeeting"
+
+class Conference:
+
+    def HardMute():
+        """
+        Mutes the participants in the call or meeting and prevents them from unmuting themselves. The command is available for Hosts and Cohosts of Webex meetings. The device must either be registered to the Webex cloud service or linked to Webex Edge for Devices.
+        """
+        return "xCommand Conference HardMute"
+
+class Conference:
+
+    def Lock():
+        """
+        Locks Webex meetings by preventing uninvited participants from joining. The command is available for Hosts and Cohosts of Webex meetings. The device must either be registered to the Webex cloud service or linked to Webex Edge for Devices.
+        """
+        return "xCommand Conference Lock"
+
+class Conference:
+
+    def LowerAllHands():
+        """
+        Lower the hands of all conference participants.
+        """
+        return "xCommand Conference LowerAllHands"
+
+class Conference:
+
+    def MuteAll():
+        """
+        Mutes all participants, except the speaker and the participant who is currently sharing. The command is available for Hosts and Cohosts of Webex meetings. The device must either be registered to the Webex cloud service or linked to Webex Edge for Devices.
+        """
+        return "xCommand Conference MuteAll"
+
+class Conference:
+
+    def MuteOnEntry():
+        """
+        Decides whether all participants are muted or not when they join the meeting. They can unmute and mute themselves later. The command is available for Hosts and Cohosts of Webex meetings. The device must either be registered to the Webex cloud service or linked to Webex Edge for Devices.
+        """
+        return "xCommand Conference MuteOnEntry"
+
+class Conference:
+
+    def TransferHostAndLeave():
+        """
+        Lets you leave a meeting you are hosting, but allows the other particpants to continue the meeting. A new host is assigned automatically
+        """
+        return "xCommand Conference TransferHostAndLeave"
+
+class Conference:
+
+    class Call:
+    
+        def AuthenticationResponse():
+            """
+            This command is only available for Cisco Webex registered devices. The command gives a response to an authentication request based on the Conference Call[n] AuthenticationRequest status.
+            """
+            return "xCommand Conference Call AuthenticationResponse"
+
+class Conference:
+
+    class DoNotDisturb:
+    
+        def Activate():
+            """
+            This command switches on the Do Not Disturb mode, and the Timeout parameter allows you to control when it is switched off again. When Do Not Disturb is switched on, all incoming calls are rejected and registered as missed calls. The calling side receives a busy signal.
+            """
+            return "xCommand Conference DoNotDisturb Activate"
+
+class Conference:
+
+    class DoNotDisturb:
+    
+        def Deactivate():
+            """
+            Switch off the Do Not Disturb mode. When Do Not Disturb is switched off incoming calls come through as normal.
+            """
+            return "xCommand Conference DoNotDisturb Deactivate"
+
+class Conference:
+
+    class Hand:
+    
+        def Lower():
+            """
+            Lower your hand. Use the raise hand feature to let the host know that you have a question or a comment. Raise Hand is available in meetings with more than two participants. It's not available in meetings started from a Webex space.
+            """
+            return "xCommand Conference Hand Lower"
+
+class Conference:
+
+    class Hand:
+    
+        def Raise():
+            """
+            Raise your hand. Use the raise hand feature to let the host know that you have a question or a comment. Raise Hand is available in meetings with more than two participants. It's not available in meetings started from a Webex space.
+            """
+            return "xCommand Conference Hand Raise"
+
+class Conference:
+
+    class MeetingAssistant:
+    
+        def Start():
+            """
+            Not applicable in this version.
+            """
+            return "xCommand Conference MeetingAssistant Start"
+
+class Conference:
+
+    class MeetingAssistant:
+    
+        def Stop():
+            """
+            Not applicable in this version.
+            """
+            return "xCommand Conference MeetingAssistant Stop"
+
+class Conference:
+
+    class Participant:
+    
+        def Admit():
+            """
+            Admits or lets in a participant that is waiting to be admitted into the call or meeting. This command is only available Cisco Webex registered devices. A participant is waiting to be admitted if he has status "waiting" in the result from the Conference ParticipantList Search command (*r ParticipantListSearchResult Participant [n] Status = "waiting").
+            """
+            return "xCommand Conference Participant Admit"
+
+class Conference:
+
+    class Participant:
+    
+        def Disconnect():
+            """
+            Disconnects the participant from a call or meeting. It is only possible to disconnect a participant if the Conference Call[n] Capabilities ParticipantDisconnect status for the meeting shows Available.
+            """
+            return "xCommand Conference Participant Disconnect"
+
+class Conference:
+
+    class Participant:
+    
+        def LowerHand():
+            """
+            Lower the hand of a participant in a conference.
+            """
+            return "xCommand Conference Participant LowerHand"
+
+class Conference:
+
+    class Participant:
+    
+        def Mute():
+            """
+            Mutes the participant in the call or meeting. It is only possible to mute a participant if the Conference Call[n] Capabilities ParticipantMute status shows Available.
+            """
+            return "xCommand Conference Participant Mute"
+
+class Conference:
+
+    class ParticipantList:
+    
+        def Search():
+            """
+            Returns details about the participants in the call. The results can be filtered by specifying additional parameters.
+            """
+            return "xCommand Conference ParticipantList Search"
+
+class Conference:
+
+    class Reaction:
+    
+        def Disable():
+            """
+            Prevents participants from reacting with emojis during a Webex meeting. This command is available for Hosts and Cohosts of Webex meetings. The device must either be registered to the Webex cloud service or linked to Webex Edge for Devices.
+            """
+            return "xCommand Conference Reaction Disable"
+
+class Conference:
+
+    class Reaction:
+    
+        def Enable():
+            """
+            Allows participants to react with emojis during a Webex meeting. This command is available for Hosts and Cohosts of Webex meetings. The device must either be registered to the Webex cloud service or linked to Webex Edge for Devices.
+            """
+            return "xCommand Conference Reaction Enable"
+
+class Conference:
+
+    class Reaction:
+    
+        def Send():
+            """
+            Sends a reaction (emoji) during a Webex meeting. The device must either be registered to the Webex cloud service or linked to Webex Edge for Devices.
+            """
+            return "xCommand Conference Reaction Send"
+
+class Conference:
+
+    class Reaction:
+    
+        def Tone():
+            """
+            Selects the skin tone to be used for the emojis sent hereafter. Skin tones are available for reactions that use hand gestures, such as thumbs up and clapping hands. For personal mode devices the skin tone will persist between calls; for shared mode devices it will be reset when a call ends. The device must either be registered to the Webex cloud service or linked to Webex Edge for Devices.
+            """
+            return "xCommand Conference Reaction Tone"
+
+class Conference:
+
+    class Recording:
+    
+        def Pause():
+            """
+            Define if the recording of a meeting shall be paused. When you are recording a meeting, you can use this setting if you want to pause the recording. You can resume the recording by using the command Conference Recording Resume.
+            """
+            return "xCommand Conference Recording Pause"
+
+class Conference:
+
+    class Recording:
+    
+        def Resume():
+            """
+            Define if the recording of a meeting shall be resumed. When you are recording a meeting, you can use this setting if you want to resume a recording that has previously been paused.
+            """
+            return "xCommand Conference Recording Resume"
+
+class Conference:
+
+    class Recording:
+    
+        def Start():
+            """
+            Define if the meeting shall be recorded. Once you are in a meeting, you can use this setting if you want to start recording. Note that the recording commands are only available if your infrastructure (Cisco Meeting Server) supports recording.
+            """
+            return "xCommand Conference Recording Start"
+
+class Conference:
+
+    class Recording:
+    
+        def Stop():
+            """
+            Define if the recording of a meeting shall be stoppped. When you are recording a meeting, you can use this setting to stop recording.
+            """
+            return "xCommand Conference Recording Stop"
+
+class Conference:
+
+    class SpeakerLock:
+    
+        def Release():
+            """
+            Releases locked speaker set by xCommand Conference SpeakerLock Set. Default voice switching is switched back on.
+            """
+            return "xCommand Conference SpeakerLock Release"
+
+class Conference:
+
+    class SpeakerLock:
+    
+        def Set():
+            """
+            For manually locking one of the speakers to the prominent speaker position. This overrides the default voice switching.
+            """
+            return "xCommand Conference SpeakerLock Set"
+
+class Diagnostics:
 
     def Run():
-        pass
+        """
+        This command runs self-diagnostics commands on the device.
+        """
+        return "xCommand Diagnostics Run"
+
+class HttpClient:
+
+    def Delete():
+        """
+        Sends an HTTP(S) Delete request to the server that is specified in the Url parameter. You can use the AllowInsecureHTTPS parameter to specify whether or not to validate the server's certificate before sending data over HTTPS. This parameter has no effect unless the xConfiguration HttpClient AllowInsecureHTTPS is set to On. The command returns the HTTP status code along with the data returned from the server (HTTP headers and body).
+        """
+        return "xCommand HttpClient Delete"
+
+class HttpClient:
+
+    def Get():
+        """
+        Sends an HTTP(S) Get request to the server that is specified in the Url parameter. You can use the AllowInsecureHTTPS parameter to specify whether or not to validate the server's certificate before sending data over HTTPS. This parameter has no effect unless the xConfiguration HttpClient AllowInsecureHTTPS is set to On. The command returns the HTTP status code along with the data returned from the server (HTTP headers and body).
+        """
+        return "xCommand HttpClient Get"
+
+class HttpClient:
+
+    def Patch():
+        """
+        Sends an HTTP(S) Patch request to the server that is specified in the Url parameter. This is a multiline command, so the payload (data) follows after the parameters. You can use the AllowInsecureHTTPS parameter to specify whether or not to validate the server's certificate before sending data over HTTPS. This parameter has no effect unless the xConfiguration HttpClient AllowInsecureHTTPS is set to On. The command returns the HTTP status code along with the data returned from the server (HTTP hea...
+        """
+        return "xCommand HttpClient Patch"
+
+class HttpClient:
+
+    def Post():
+        """
+        Sends an HTTP(S) Post request to the server that is specified in the Url parameter. You can use the AllowInsecureHTTPS parameter to specify whether or not to validate the server's certificate before sending data over HTTPS. This parameter has no effect unless the xConfiguration HttpClient AllowInsecureHTTPS is set to On. This is a multiline command, so the payload (data) follows after the parameters.
+        """
+        return "xCommand HttpClient Post"
+
+class HttpClient:
+
+    def Put():
+        """
+        Sends an HTTP(S) Put request to the server that is specified in the Url parameter. You can use the AllowInsecureHTTPS parameter to specify whether or not to validate the server's certificate before sending data over HTTPS. This parameter has no effect unless the xConfiguration HttpClient AllowInsecureHTTPS is set to On. This is a multiline command, so the payload (data) follows after the parameters.
+        """
+        return "xCommand HttpClient Put"
+
+class HttpClient:
+
+    class Allow:
+    
+        class Hostname:
+        
+            def Add():
+                """
+                Adds an HTTP(S) server to the list of allowed servers (hosts). The HttpClient Allow Hostname commands let you set up and maintain a list of up to ten allowed hosts. As long as the list is not empty, you can send HTTP(S) requests only to the servers in the list. The check against the list is performed both when using insecure (HTTP) and secure (HTTPS) transfer of data.
+                """
+                return "xCommand HttpClient Allow Hostname Add"
+
+class HttpClient:
+
+    class Allow:
+    
+        class Hostname:
+        
+            def Clear():
+                """
+                Removes all HTTP(S) servers from the list of allowed servers (hosts), leaving you with an empty list.
+                """
+                return "xCommand HttpClient Allow Hostname Clear"
+
+class HttpClient:
+
+    class Allow:
+    
+        class Hostname:
+        
+            def List():
+                """
+                Returns the list of allowed HTTP(S) servers (hosts). The HttpClient Allow Hostname commands let you set up and maintain a list of up to ten allowed hosts. As long as the list is not empty, you can send HTTP(S) requests only to the servers in the list. The check against the list is performed both when using insecure (HTTP) and secure (HTTPS) transfer of data.
+                """
+                return "xCommand HttpClient Allow Hostname List"
+
+class HttpClient:
+
+    class Allow:
+    
+        class Hostname:
+        
+            def Remove():
+                """
+                Removes an HTTP(S) server from the list of allowed servers (hosts). Use the HttpClient Allow Hostname List command to find the indentifier of each entry in the list.
+                """
+                return "xCommand HttpClient Allow Hostname Remove"
+
+class HttpFeedback:
+
+    def Deregister():
+        """
+        Deregister the HTTP feedback over HTTP(S).
+        """
+        return "xCommand HttpFeedback Deregister"
+
+class HttpFeedback:
+
+    def Enable():
+        """
+        Re-enables a previously registered feedback slot after it has failed and become deactivated.
+        """
+        return "xCommand HttpFeedback Enable"
+
+class HttpFeedback:
+
+    def Register():
+        """
+        Register the device to an HTTP(S) server to return XML feedback over HTTP(S) to specific URLs.
+        """
+        return "xCommand HttpFeedback Register"
+
+class Logging:
+
+    def SendLogs():
+        """
+        Send logs to the Cisco Webex cloud. These logs can help diagnose and fix issues with the device. The command returns a log ID, which an administrator or TAC engineer can use to identify and download the logs. For the command to work, the device must either be registered to the Webex cloud service or registered to an on-premises service and linked to Webex Edge for Devices. Additionally, for devices linked to Webex Edge for Devices, the xConfiguration Logging CloudUpload Mode must be set to On.
+        """
+        return "xCommand Logging SendLogs"
+
+class Logging:
+
+    class ExtendedLogging:
+    
+        def Start():
+            """
+            Start running continuous extended logging for the specified duration.
+            """
+            return "xCommand Logging ExtendedLogging Start"
+
+class Logging:
+
+    class ExtendedLogging:
+    
+        def Stop():
+            """
+            Stop running the extended logging process.
+            """
+            return "xCommand Logging ExtendedLogging Stop"
+
+class Macros:
+
+    class Log:
+    
+        def Clear():
+            """
+            Clears the Macros Logs.
+            """
+            return "xCommand Macros Log Clear"
+
+class Macros:
+
+    class Log:
+    
+        def Get():
+            """
+            Shows the logs for all running macros and for the runtime itself.
+            """
+            return "xCommand Macros Log Get"
+
+class Macros:
+
+    class Macro:
+    
+        def Activate():
+            """
+            Activates a macro created on this device.
+            """
+            return "xCommand Macros Macro Activate"
+
+class Macros:
+
+    class Macro:
+    
+        def Deactivate():
+            """
+            Deactivates a macro currently running on this device.
+            """
+            return "xCommand Macros Macro Deactivate"
+
+class Macros:
+
+    class Macro:
+    
+        def Get():
+            """
+            ShowsTruethe details of a macro created on this device.
+            """
+            return "xCommand Macros Macro Get"
+
+class Macros:
+
+    class Macro:
+    
+        def Remove():
+            """
+            Removes a macro created on this device.
+            """
+            return "xCommand Macros Macro Remove"
+
+class Macros:
+
+    class Macro:
+    
+        def RemoveAll():
+            """
+            Removes all of the macros created on this device.
+            """
+            return "xCommand Macros Macro RemoveAll"
+
+class Macros:
+
+    class Macro:
+    
+        def Rename():
+            """
+            Renames a macro created on this device.
+            """
+            return "xCommand Macros Macro Rename"
+
+class Macros:
+
+    class Macro:
+    
+        def Save():
+            """
+            Saves the details of a macro. This is a multiline command.
+            """
+            return "xCommand Macros Macro Save"
+
+class Macros:
+
+    class Macro:
+    
+        class Roles:
+        
+            def Set():
+                """
+                Sets the role for a macro.
+                """
+                return "xCommand Macros Macro Roles Set"
+
+class Macros:
+
+    class Runtime:
+    
+        def Restart():
+            """
+            Restarts all of the macros set up on this device.
+            """
+            return "xCommand Macros Runtime Restart"
+
+class Macros:
+
+    class Runtime:
+    
+        def Start():
+            """
+            Starts all of the macros set up on this device.
+            """
+            return "xCommand Macros Runtime Start"
+
+class Macros:
+
+    class Runtime:
+    
+        def Status():
+            """
+            Shows the current status of the macros runtime on this device.
+            """
+            return "xCommand Macros Runtime Status"
+
+class Macros:
+
+    class Runtime:
+    
+        def Stop():
+            """
+            Stops all of the macros set up on this device.
+            """
+            return "xCommand Macros Runtime Stop"
+
+class Message:
+
+    def Send():
+        """
+        Triggers a Message Send event which sends text to any listening clients.
+        """
+        return "xCommand Message Send"
+
+class Network:
+
+    class SNMP:
+    
+        class USM:
+        
+            class User:
+            
+                def Add():
+                    """
+                    Creates a user (username and passwords) that a network management system can use to communicate with the video conferencing device using SNMP v3, User-based Security Model (USM). All USM users have equal access rights (read, read-write, or none), refer to the NetworkServices SNMP Mode setting. Authentication and privacy are always on. That is, the device supports only the authPriv security level and the privacy protocol is always AES (Advanced Encryption Standard). This command has no effect on ...
+                    """
+                    return "xCommand Network SNMP USM User Add"
+
+class Network:
+
+    class SNMP:
+    
+        class USM:
+        
+            class User:
+            
+                def Delete():
+                    """
+                    Deletes a USM user from the device.
+                    """
+                    return "xCommand Network SNMP USM User Delete"
+
+class Network:
+
+    class SNMP:
+    
+        class USM:
+        
+            class User:
+            
+                def List():
+                    """
+                    Returns the list of all USM users that are stored on the device.
+                    """
+                    return "xCommand Network SNMP USM User List"
+
+class Network:
+
+    class Wifi:
+    
+        def Configure():
+            """
+            Configures the device to be able to connect to a specific Wi-Fi network. This is only available if Wi-Fi is enabled on the device. You must unplug the Ethernet cable before you can connect to Wi-Fi. Both WPA2-only and mixed mode access points with WPA2 are supported.
+            """
+            return "xCommand Network Wifi Configure"
+
+class Network:
+
+    class Wifi:
+    
+        def Delete():
+            """
+            Deletes the specified Wi-Fi network connection from the device. This command is only available if Wi-Fi services are turned on and ethernet is disconnected.
+            """
+            return "xCommand Network Wifi Delete"
+
+class Network:
+
+    class Wifi:
+    
+        def List():
+            """
+            Lists the details of the current Wi-Fi connection. This command is only available if Wi-Fi services are turned on and ethernet is disconnected.
+            """
+            return "xCommand Network Wifi List"
+
+class Network:
+
+    class Wifi:
+    
+        class Scan:
+        
+            def Start():
+                """
+                Scans for available Wi-Fi networks.
+                """
+                return "xCommand Network Wifi Scan Start"
+
+class Network:
+
+    class Wifi:
+    
+        class Scan:
+        
+            def Stop():
+                """
+                Stops an ongoing Wi-Fi scan.
+                """
+                return "xCommand Network Wifi Scan Stop"
+
+class Peripherals:
+
+    def Connect():
+        """
+        Register peripherals that are connected to the device, such as control systems and touch panels. The registered peripherals are displayed on the web interface under Configuration > Peripherals. This command should be used when the peripheral connects to the codec for the first time or when the software version on the peripheral has changed. The list of connected devices is available in the Peripherals ConnectedDevice [n] Status status.
+        """
+        return "xCommand Peripherals Connect"
+
+class Peripherals:
+
+    def HeartBeat():
+        """
+        When a peripheral is registered as a connected device, you can set it to send a heartbeat to the codec to let the codec know that it is still connected. This will keep the device on the xStatus Peripherals ConnectedDevice list. If the peripheral is not set to send a heartbeat, the device will disappear from the list after a while. Note: Does not apply to cameras.
+        """
+        return "xCommand Peripherals HeartBeat"
+
+class Peripherals:
+
+    def List():
+        """
+        Lists all currently and previously connected peripherals.
+        """
+        return "xCommand Peripherals List"
+
+class Peripherals:
+
+    def Purge():
+        """
+        Force unpair a video conferencing device from an ISDN Link when a connection has been lost. Note: You must also unpair the ISDN Link to be able to pair it to another video conferencing device.
+        """
+        return "xCommand Peripherals Purge"
+
+class Peripherals:
+
+    class Pairing:
+    
+        def Pair():
+            """
+            Pair an ISDN Link to a video conferencing device.
+            """
+            return "xCommand Peripherals Pairing Pair"
+
+class Peripherals:
+
+    class Pairing:
+    
+        def Unpair():
+            """
+            Unpair the video conferencing device from an ISDN Link, when the two have contact.
+            """
+            return "xCommand Peripherals Pairing Unpair"
+
+class Peripherals:
+
+    class Pairing:
+    
+        class PinPairing:
+        
+            def Start():
+                """
+                When connecting a touch controller to a video device across the network, you can pair by using a PIN or a passphrase. To initiate pairing by PIN, issue this command.
+                """
+                return "xCommand Peripherals Pairing PinPairing Start"
+
+class Peripherals:
+
+    class Pairing:
+    
+        class PinPairing:
+        
+            def Stop():
+                """
+                Stop the pin pairing process.
+                """
+                return "xCommand Peripherals Pairing PinPairing Stop"
+
+class Peripherals:
+
+    class TouchPanel:
+    
+        def Configure():
+            """
+            A Room Navigator can operate in different modes: As standard user interface for the video conferencing device (controller), as a room booking device (room scheduler), or to display a persistent web app. The information, buttons, and controls displayed on the Room Navigator screen depend on the mode. You can also add information whether the Room Navigator is in the same room as the device, or if it is outside the room. Information about the location is useful when collecting and processing senso...
+            """
+            return "xCommand Peripherals TouchPanel Configure"
+
+class Phonebook:
+
+    def Search():
+        """
+        The search command lets you search in both the local and corporate phone books. A search gives a ResultSet. The total number of folders and contacts (TotalRows) is always included in the result set when searching the local phone book. When searching a corporate phonebook the total number of folders and contacts may not be included. Whether it is included or not depends on the backend corporate phonebook service (for example, CUCM, VCS, or TMS) and its version.
+        """
+        return "xCommand Phonebook Search"
+
+class Phonebook:
+
+    class Contact:
+    
+        def Add():
+            """
+            Add a new contact to the local phonebook. The command returns the ContactId, which is a unique string that identifies the contact; typically, the format is “localContactId-n”. You can add several contact methods (each with different Number, CallRate, CallType, Device, and Protocol) to a contact using the xCommand Phonebook ContactMethod Add command. Only the first contact method will appear in the Favorites list on the touch controller. All contact methods are available on the other UIs.
+            """
+            return "xCommand Phonebook Contact Add"
+
+class Phonebook:
+
+    class Contact:
+    
+        def Delete():
+            """
+            Delete an existing contact from the local phonebook.
+            """
+            return "xCommand Phonebook Contact Delete"
+
+class Phonebook:
+
+    class Contact:
+    
+        def Modify():
+            """
+            Modify contact details of an existing contact in the local phonebook. The following parameters can be changed using this command: Name, FolderId, ImageURL and Title. You must use the xCommand Phonebook ContactMethod Modify command to change the other parameters: Number, Protocol, CallRate, CallType and Device.
+            """
+            return "xCommand Phonebook Contact Modify"
+
+class Phonebook:
+
+    class ContactMethod:
+    
+        def Add():
+            """
+            Add contact details for an existing contact in the local phonebook. The command returns the ContactMethodId, which is a unique string that identifies the contact method; typically, the format is “n”. You can add several contact methods to a contact. Note that only the first contact method will appear in the Favorites list on the device's user interface. The first contact method may have been created when issuing the xCommand Phonebook Contact Add command to make the contact. All contact methods ...
+            """
+            return "xCommand Phonebook ContactMethod Add"
+
+class Phonebook:
+
+    class ContactMethod:
+    
+        def Delete():
+            """
+            Delete a contact method from an existing contact in the local phonebook.
+            """
+            return "xCommand Phonebook ContactMethod Delete"
+
+class Phonebook:
+
+    class ContactMethod:
+    
+        def Modify():
+            """
+            Modify details about the contact method for an existing contact in the local phonebook.
+            """
+            return "xCommand Phonebook ContactMethod Modify"
+
+class Phonebook:
+
+    class Folder:
+    
+        def Add():
+            """
+            Phonebook entries can be stored in folders. Use this command to add a folder to the local phonebook. The command returns the FolderId, which is a unique string that identifies the folder; typically, the format is “localGroupId-n”.
+            """
+            return "xCommand Phonebook Folder Add"
+
+class Phonebook:
+
+    class Folder:
+    
+        def Delete():
+            """
+            Delete an existing folder from the local phonebook.
+            """
+            return "xCommand Phonebook Folder Delete"
+
+class Phonebook:
+
+    class Folder:
+    
+        def Modify():
+            """
+            Modify an existing phonebook folder.
+            """
+            return "xCommand Phonebook Folder Modify"
+
+class Presentation:
+
+    def Start():
+        """
+        Open a media stream from the selected presentation source. You can combine multiple presentation sources in a single presentation video stream (the maximum number of different input sources depend on the type of video conferencing device) by adding multiple ConnectorId or PresentationSource parameters in the same command. The order in which you place them in the command determines the order in which the sources show up on the screen. You cannot use a mix of identifier types in the same command; ...
+        """
+        return "xCommand Presentation Start"
+
+class Presentation:
+
+    def Stop():
+        """
+        Stop the media stream from the presentation source.
+        """
+        return "xCommand Presentation Stop"
+
+class Provisioning:
+
+    def CompleteUpgrade():
+        """
+        Starts installing the software upgrade if you wish to install it before it is set to do so.
+        """
+        return "xCommand Provisioning CompleteUpgrade"
+
+class Provisioning:
+
+    def PostponeUpgrade():
+        """
+        Postpones the installing of the software upgrade.
+        """
+        return "xCommand Provisioning PostponeUpgrade"
+
+class Provisioning:
+
+    class CUCM:
+    
+        class ExtensionMobility:
+        
+            def Login():
+                """
+                Login command for the Extension Mobility service. You log in to the Extension Mobility service with a username (UserId) and pin code (Pin). The username and pin code are set up in CUCM. CUCM also supports multiple profiles for a user. If you, for a user that has multiple profiles, submit a login command with only username and pin code, CUCM will send a list of available profiles back to the device. Then the device will create corresponding ExtensionMobilityProfileSelection Profile events, so tha...
+                """
+                return "xCommand Provisioning CUCM ExtensionMobility Login"
+
+class Provisioning:
+
+    class CUCM:
+    
+        class ExtensionMobility:
+        
+            def Logout():
+                """
+                This command will log you out of your Extension Mobility profile.
+                """
+                return "xCommand Provisioning CUCM ExtensionMobility Logout"
+
+class Provisioning:
+
+    class Service:
+    
+        def Fetch():
+            """
+            Add or update the customization template that details the custom elements of the device. Examples of custom elements are: branding images, macros, favorites, sign-in banner, and in-room control panels.
+            """
+            return "xCommand Provisioning Service Fetch"
+
+class Proximity:
+
+    class Services:
+    
+        def Activate():
+            """
+            Reactivate the Proximity services that were deactivated with xCommand Proximity Services Deactivate.
+            """
+            return "xCommand Proximity Services Activate"
+
+class Proximity:
+
+    class Services:
+    
+        def Deactivate():
+            """
+            This command deactivates all proximity services on the device. To reactivate proximity services use the command xCommand Proximity Services Activate.
+            """
+            return "xCommand Proximity Services Deactivate"
+
+class RoomCleanup:
+
+    def Cancel():
+        """
+        Cancel the scheduled daily room cleanup.
+        """
+        return "xCommand RoomCleanup Cancel"
+
+class RoomCleanup:
+
+    def Run():
+        """
+        Run a cleanup of the specified type of data, as applicable.
+        """
+        return "xCommand RoomCleanup Run"
 
 class RoomPreset:
-    pass
 
     def Activate():
-        pass
+        """
+        Activate one of the locally stored presets. Note that information about all video input sources, and pan, tilt, zoom and focus values for all cameras are included in the same preset. In contrast, the xCommand Camera Preset commands applies to individual cameras only.
+        """
+        return "xCommand RoomPreset Activate"
 
 class RoomPreset:
-    pass
 
     def Clear():
-        pass
+        """
+        Delete a preset. Note that information about all video input sources, and pan, tilt, zoom and focus values for all cameras are included in the same preset. In contrast, the xCommand Camera Preset commands applies to individual cameras only.
+        """
+        return "xCommand RoomPreset Clear"
 
 class RoomPreset:
-    pass
 
     def Store():
-        pass
+        """
+        Store the connector selections for all video input sources and the current position (pan and tilt), zoom and focus values for all cameras. Note that information about all video input sources, and pan, tilt, zoom and focus values for all cameras are included in the same preset. The device may hold 15 such predefined video input presets. These presets are available for far end control. That is, they are referred in the PresetId parameter of the FarEndControl Preset Activate command. In contrast, t...
+        """
+        return "xCommand RoomPreset Store"
 
 class Security:
-    pass
 
     def Persistency():
-        pass
+        """
+        Set the following features to persistent or non-persistent mode. In non-persistent mode the information gathered by the specified feature does not persist a reboot of the device. Persistent mode is the default. This command reboots the device.
+        """
+        return "xCommand Security Persistency"
 
 class Security:
-    pass
 
     class Certificates:
-        pass
-
+    
         class CA:
-            pass
-
-            class Add:
-                pass
-
-                class Raw:
-                    pass
-
-                    class data:
-                        pass
-
-                        class here...:
-                            pass
-
-                            class Must:
-                                pass
-
-                                class end:
-                                    pass
-
-                                    class with:
-                                        pass
-
-                                        class line:
-                                            pass
-
-                                            class with:
-                                                pass
-
-                                                class single:
-                                                    pass
-
-                                                    class dot:
-                                                        pass
-
-                                                        def .():
-                                                            pass
-
-class Security:
-    pass
-
-    class Certificates:
-        pass
-
-        class CA:
-            pass
-
-            def Delete():
-                pass
-
-class Security:
-    pass
-
-    class Certificates:
-        pass
-
-        class CA:
-            pass
-
-            def Show():
-                pass
-
-class Security:
-    pass
-
-    class Certificates:
-        pass
-
-        class CUCM:
-            pass
-
-            class CTL:
-                pass
-
-                def Delete():
-                    pass
-
-class Security:
-    pass
-
-    class Certificates:
-        pass
-
-        class CUCM:
-            pass
-
-            class CTL:
-                pass
-
-                def Show():
-                    pass
-
-class Security:
-    pass
-
-    class Certificates:
-        pass
-
-        class CUCM:
-            pass
-
-            class ITL:
-                pass
-
-                def Show():
-                    pass
-
-class Security:
-    pass
-
-    class Certificates:
-        pass
-
-        class CUCM:
-            pass
-
-            class MIC:
-                pass
-
-                def Show():
-                    pass
-
-class Security:
-    pass
-
-    class Certificates:
-        pass
-
-        class Services:
-            pass
-
-            def Activate():
-                pass
-
-class Security:
-    pass
-
-    class Certificates:
-        pass
-
-        class Services:
-            pass
-
+        
             def Add():
-                pass
+                """
+                Uploads CA security certificates to this device. This is a multiline command.
+                """
+                return "xCommand Security Certificates CA Add"
 
 class Security:
-    pass
 
     class Certificates:
-        pass
-
-        class Services:
-            pass
-
-            def Deactivate():
-                pass
-
-class Security:
-    pass
-
-    class Certificates:
-        pass
-
-        class Services:
-            pass
-
+    
+        class CA:
+        
             def Delete():
-                pass
+                """
+                Deletes a CA security certificate from this device.
+                """
+                return "xCommand Security Certificates CA Delete"
 
 class Security:
-    pass
 
     class Certificates:
-        pass
+    
+        class CA:
+        
+            def Show():
+                """
+                Shows the details for the CA security certificates on this device.
+                """
+                return "xCommand Security Certificates CA Show"
 
+class Security:
+
+    class Certificates:
+    
+        class CUCM:
+        
+            class CTL:
+            
+                def Delete():
+                    """
+                    api-description all="true">Deletes the Certificate Trust List (CTL) and Identity Trust List (ITL) from this device. This command applies only to devices that are registered to CUCM.
+                    """
+                    return "xCommand Security Certificates CUCM CTL Delete"
+
+class Security:
+
+    class Certificates:
+    
+        class CUCM:
+        
+            class CTL:
+            
+                def Show():
+                    """
+                    Shows the details of the Certificate Trust List (CTL) on this device. CTL is used for devices that are registered to CUCM and contains a list of certificates for services within the CUCM cluster that the device is to trust.
+                    """
+                    return "xCommand Security Certificates CUCM CTL Show"
+
+class Security:
+
+    class Certificates:
+    
+        class CUCM:
+        
+            class ITL:
+            
+                def Show():
+                    """
+                    Shows the details of the Identity Trust List (ITL) on this device. ITL is used for devices that are registered to CUCM and contains a list of certificates for services within the CUCM cluster that the device is to trust.
+                    """
+                    return "xCommand Security Certificates CUCM ITL Show"
+
+class Security:
+
+    class Certificates:
+    
+        class CUCM:
+        
+            class MIC:
+            
+                def Show():
+                    """
+                    Shows the details of the Manufacture Installed Certificate (MIC) on this device. A MIC is signed by the Cisco Manufacturing CA and is installed on the device during production. This certificate is immutable.
+                    """
+                    return "xCommand Security Certificates CUCM MIC Show"
+
+class Security:
+
+    class Certificates:
+    
         class Services:
-            pass
-
-            def Show():
-                pass
+        
+            def Activate():
+                """
+                Activates a security certificate on this device.
+                """
+                return "xCommand Security Certificates Services Activate"
 
 class Security:
-    pass
 
     class Certificates:
-        pass
+    
+        class Services:
+        
+            def Add():
+                """
+                Uploads security certificates to this device. This is a multiline command.
+                """
+                return "xCommand Security Certificates Services Add"
 
+class Security:
+
+    class Certificates:
+    
+        class Services:
+        
+            def Deactivate():
+                """
+                Deactivates security certificates on this device.
+                """
+                return "xCommand Security Certificates Services Deactivate"
+
+class Security:
+
+    class Certificates:
+    
+        class Services:
+        
+            def Delete():
+                """
+                Deletes security certificates from this device.
+                """
+                return "xCommand Security Certificates Services Delete"
+
+class Security:
+
+    class Certificates:
+    
+        class Services:
+        
+            def Show():
+                """
+                Shows details for security certificates on this device.
+                """
+                return "xCommand Security Certificates Services Show"
+
+class Security:
+
+    class Certificates:
+    
         class ThirdParty:
-            pass
-
+        
             def Disable():
-                pass
+                """
+                Disables a bundled certificate used for SMTP and HttpClient. Disabling a certificate results in a server providing a certificate signed with this root certificate will be declined.
+                """
+                return "xCommand Security Certificates ThirdParty Disable"
 
 class Security:
-    pass
 
     class Certificates:
-        pass
-
+    
         class ThirdParty:
-            pass
-
+        
             def Enable():
-                pass
+                """
+                Enables a bundled certificate used for SMTP and HttpClient.
+                """
+                return "xCommand Security Certificates ThirdParty Enable"
 
 class Security:
-    pass
 
     class Certificates:
-        pass
-
+    
         class ThirdParty:
-            pass
-
+        
             def List():
-                pass
+                """
+                Lists all bundled certificates and their state.
+                """
+                return "xCommand Security Certificates ThirdParty List"
 
 class Security:
-    pass
 
     class Certificates:
-        pass
-
+    
         class ThirdParty:
-            pass
-
+        
             def Show():
-                pass
+                """
+                Shows a single third-party certificate.
+                """
+                return "xCommand Security Certificates ThirdParty Show"
 
 class Security:
-    pass
 
     class Certificates:
-        pass
-
+    
         class Webex:
-            pass
-
+        
             def Show():
-                pass
+                """
+                This command applies only to devices that are registered to the Cisco Webex cloud service. Shows the list of trusted CA certificates that verifies the certificates of servers and services used by the Cisco Webex cloud.
+                """
+                return "xCommand Security Certificates Webex Show"
 
 class Security:
-    pass
 
     class Certificates:
-        pass
-
+    
         class WebexIdentity:
-            pass
-
+        
             def Show():
-                pass
+                """
+                This command applies only to devices that are registered to the Cisco Webex cloud service. Shows the root Certificate Authority (CA) list for Webex Identity.
+                """
+                return "xCommand Security Certificates WebexIdentity Show"
 
 class Security:
-    pass
 
     class Ciphers:
-        pass
-
+    
         def List():
-            pass
+            """
+            List the ciphers supported by various services (domains). Result: Name: Name of this domain. * Syslog-TLS: Used for logging over TLS. * HTTPS server: Used by the endpoint's own web server. * HTTPS client: Used for all https client traffic from the endpoint. * Pairing: Used for peripheral pairing to touch devices and microphones/amplifiers. * SIP TLS: Used for direct IP SIP connections, SIP connections to CUCM or to VCS or other SIP proxies when transport is TLS. Cipherlist: The actual ...
+            """
+            return "xCommand Security Ciphers List"
 
 class Security:
-    pass
 
     class ClientSecret:
-        pass
-
+    
         def Populate():
-            pass
+            """
+            This command applies only to devices that are registered to the Cisco Webex cloud service. Accepts a base64url encoded plain text value for seeding the client secret on the device for the first time. To update the secret after that first time, you must supply a JWE blob containing the new secret encrypted by the old secret. This is a multiline command.
+            """
+            return "xCommand Security ClientSecret Populate"
 
 class Security:
-    pass
 
     class Session:
-        pass
-
+    
         def Get():
-            pass
+            """
+            Shows details of your current session.
+            """
+            return "xCommand Security Session Get"
 
 class Security:
-    pass
 
     class Session:
-        pass
-
+    
         def List():
-            pass
+            """
+            List active sessions.
+            """
+            return "xCommand Security Session List"
 
 class Security:
-    pass
 
     class Session:
-        pass
-
+    
         def Terminate():
-            pass
+            """
+            Terminate a session.
+            """
+            return "xCommand Security Session Terminate"
 
 class Standby:
-    pass
 
     def Activate():
-        pass
+        """
+        Set the device in standby mode, which turns off the video outputs and put the camera into sleep mode.
+        """
+        return "xCommand Standby Activate"
 
 class Standby:
-    pass
 
     def Deactivate():
-        pass
+        """
+        Bring the device out of standby mode.
+        """
+        return "xCommand Standby Deactivate"
 
 class Standby:
-    pass
 
     def Halfwake():
-        pass
+        """
+        Sets the device to "Halfwake" state. This state informs the user from the UI, to pick up a remote or to tap the touch device to get started.
+        """
+        return "xCommand Standby Halfwake"
 
 class Standby:
-    pass
 
     def ResetHalfwakeTimer():
-        pass
+        """
+        Sets a temporary Halfwake timer delay. If the device is in Halfwake mode when the reset timer is set, the device is brought out of Halfwake mode. When left idle for the given delay the device goes into halfwake mode.
+        """
+        return "xCommand Standby ResetHalfwakeTimer"
 
 class Standby:
-    pass
 
     def ResetTimer():
-        pass
+        """
+        Reset the standby delay timer or set a temporary standby delay. If the device is in standby mode when the timer is set, the device is brought out of standby mode before starting the countdown. If you don't specify a Delay, the standby delay timer is reset, and the device goes into standby after the period that is given by the Standby Delay setting (xConfiguration Standby Delay). If you do specify a Delay, the device goes into standby when it has been idle for the specified period. Next time, the...
+        """
+        return "xCommand Standby ResetTimer"
 
 class SystemUnit:
-    pass
 
     def Boot():
-        pass
+        """
+        Reboot the device.
+        """
+        return "xCommand SystemUnit Boot"
 
 class SystemUnit:
-    pass
 
     def FactoryReset():
-        pass
+        """
+        Reset the codec to factory default settings. The call logs are deleted and all device parameters are reset to default values. All files that have been uploaded to the codec are deleted. Option key(s) are not affected. Use the parameter Keep in order to choose which configurations and files to keep when you factory reset the device. As a default the device restarts after the factory reset, but other behaviors can be forced by selecting a different TrailingAction.
+        """
+        return "xCommand SystemUnit FactoryReset"
 
 class SystemUnit:
-    pass
 
     def SoftReset():
-        pass
+        """
+        Reset most parameters to their default values. This does not include parameters associated with room setup, such as camera position, language, and volume.
+        """
+        return "xCommand SystemUnit SoftReset"
 
 class SystemUnit:
-    pass
 
     def SoftwareUpgrade():
-        pass
+        """
+        Initiate a software upgrade by fetching the software from a given URL.
+        """
+        return "xCommand SystemUnit SoftwareUpgrade"
 
 class SystemUnit:
-    pass
 
     class DeveloperPreview:
-        pass
-
+    
         def Activate():
-            pass
+            """
+            Activate developer preview mode. When developer preview mode is activated and you have a DeveloperPreview option key installed, you will get access to public-api-preview xAPI nodes.
+            """
+            return "xCommand SystemUnit DeveloperPreview Activate"
 
 class SystemUnit:
-    pass
 
     class DeveloperPreview:
-        pass
-
+    
         def Deactivate():
-            pass
+            """
+            Deactivate developer preview mode.
+            """
+            return "xCommand SystemUnit DeveloperPreview Deactivate"
 
 class SystemUnit:
-    pass
 
     class FirstTimeWizard:
-        pass
-
+    
         def Stop():
-            pass
+            """
+            Stops the wizard which appears the first time you start the device, so the device can be set up without it. The wizard only appears again if the device is reset to its factory default settings.
+            """
+            return "xCommand SystemUnit FirstTimeWizard Stop"
 
 class SystemUnit:
-    pass
 
     class Notifications:
-        pass
-
+    
         def RemoveAll():
-            pass
+            """
+            Clears the list of system notifications that are reported by xStatus SystemUnit Notifications Text/Type.
+            """
+            return "xCommand SystemUnit Notifications RemoveAll"
 
 class SystemUnit:
-    pass
 
     class OptionKey:
-        pass
-
+    
         def Add():
-            pass
+            """
+            Add an option key to support additional features.
+            """
+            return "xCommand SystemUnit OptionKey Add"
 
 class SystemUnit:
-    pass
 
     class OptionKey:
-        pass
-
+    
         def List():
-            pass
+            """
+            List all option keys.
+            """
+            return "xCommand SystemUnit OptionKey List"
 
 class SystemUnit:
-    pass
 
     class OptionKey:
-        pass
-
+    
         def Remove():
-            pass
+            """
+            Remove a specified option key.
+            """
+            return "xCommand SystemUnit OptionKey Remove"
 
 class SystemUnit:
-    pass
 
     class OptionKey:
-        pass
-
+    
         def RemoveAll():
-            pass
+            """
+            Remove all option keys.
+            """
+            return "xCommand SystemUnit OptionKey RemoveAll"
 
 class SystemUnit:
-    pass
 
     class SignInBanner:
-        pass
-
+    
         def Clear():
-            pass
+            """
+            Clear the sign in banner set with xCommand SystemUnit SignInBanner Set.
+            """
+            return "xCommand SystemUnit SignInBanner Clear"
 
 class SystemUnit:
-    pass
 
     class SignInBanner:
-        pass
-
+    
         def Get():
-            pass
+            """
+            Get the custom message set with xCommand SystemUnit SignInBanner Set.
+            """
+            return "xCommand SystemUnit SignInBanner Get"
 
 class SystemUnit:
-    pass
 
     class SignInBanner:
-        pass
-
-        class Set:
-            pass
-
-            class Raw:
-                pass
-
-                class data:
-                    pass
-
-                    class here...:
-                        pass
-
-                        class Must:
-                            pass
-
-                            class end:
-                                pass
-
-                                class with:
-                                    pass
-
-                                    class line:
-                                        pass
-
-                                        class with:
-                                            pass
-
-                                            class single:
-                                                pass
-
-                                                class dot:
-                                                    pass
-
-                                                    def .():
-                                                        pass
-
-class SystemUnit:
-    pass
-
-    class WelcomeBanner:
-        pass
-
-        def Clear():
-            pass
-
-class SystemUnit:
-    pass
-
-    class WelcomeBanner:
-        pass
-
-        def Get():
-            pass
-
-class SystemUnit:
-    pass
-
-    class WelcomeBanner:
-        pass
-
-        class Set:
-            pass
-
-            class Raw:
-                pass
-
-                class data:
-                    pass
-
-                    class here...:
-                        pass
-
-                        class Must:
-                            pass
-
-                            class end:
-                                pass
-
-                                class with:
-                                    pass
-
-                                    class line:
-                                        pass
-
-                                        class with:
-                                            pass
-
-                                            class single:
-                                                pass
-
-                                                class dot:
-                                                    pass
-
-                                                    def .():
-                                                        pass
-
-class Time:
-    pass
-
-    class DateTime:
-        pass
-
-        def Get():
-            pass
-
-class Time:
-    pass
-
-    class DateTime:
-        pass
-
+    
         def Set():
-            pass
+            """
+            Set a sign in banner with a custom message on the device's user interface. This is a multiline command. Use: xCommand SystemUnit SignInBanner Set <enter> Banner text <enter> . <enter>
+            """
+            return "xCommand SystemUnit SignInBanner Set"
 
-class UserInterface:
-    pass
+class SystemUnit:
 
-    class Branding:
-        pass
-
+    class WelcomeBanner:
+    
         def Clear():
-            pass
+            """
+            Clear the welcome banner set with xCommand SystemUnit WelcomeBanner Set.
+            """
+            return "xCommand SystemUnit WelcomeBanner Clear"
+
+class SystemUnit:
+
+    class WelcomeBanner:
+    
+        def Get():
+            """
+            Get the custom message set with xCommand SystemUnit WelcomeBanner Set.
+            """
+            return "xCommand SystemUnit WelcomeBanner Get"
+
+class SystemUnit:
+
+    class WelcomeBanner:
+    
+        def Get():
+            """
+            Get the custom message set with xCommand SystemUnit WelcomeBanner Set.
+            """
+            return "xCommand SystemUnit WelcomeBanner Get"
+
+class Time:
+
+    class DateTime:
+    
+        def Get():
+            """
+            Read the time and date from the device.
+            """
+            return "xCommand Time DateTime Get"
+
+class Time:
+
+    class DateTime:
+    
+        def Set():
+            """
+            Set the date and time for the device, if not available from NTP (Network Time Protocol).
+            """
+            return "xCommand Time DateTime Set"
 
 class UserInterface:
-    pass
 
     class Branding:
-        pass
+    
+        def Clear():
+            """
+            Deletes the custom wallpaper, the brand background image, and the logo files from the device.
+            """
+            return "xCommand UserInterface Branding Clear"
 
+class UserInterface:
+
+    class Branding:
+    
         def Delete():
-            pass
+            """
+            Deletes the image file, which is specified in the Type parameter, from the device.
+            """
+            return "xCommand UserInterface Branding Delete"
 
 class UserInterface:
-    pass
 
     class Branding:
-        pass
-
+    
         def Fetch():
-            pass
+            """
+            Fetches an image file from a URL and stores the file on the device. Supply the URL first. The following image formats are supported: BMP, GIF, JPEG, and PNG. The maximum image size is 16 megapixels, and the maximum file size is 8MB. The Type parameter determines what kind of image it is. If it is a background image, the associated feature (Custom wallpaper or Branding with background and logo) is automatically applied. This command issues an HTTP request, so it is included in the HTTP requests c...
+            """
+            return "xCommand UserInterface Branding Fetch"
 
 class UserInterface:
-    pass
 
     class Branding:
-        pass
-
+    
         def Get():
-            pass
+            """
+            The command returns the image file that is specified in the Type parameter, given that such a file is stored on the device. The file is Base64 encoded. The format is JPG for background images and PNG for logos, regardless of the format of the originally uploaded file. Background images are stored in three sizes, one for the main screen, one for the touch controller, and one for the web interface illustrations. Use the Size parameter to choose which one to get. Logos have only one size.
+            """
+            return "xCommand UserInterface Branding Get"
 
 class UserInterface:
-    pass
 
     class Branding:
-        pass
-
+    
         def Updated():
-            pass
+            """
+            This command creates an event that tells that a new image file is uploaded to the device and ready for use. The Type parameter identifies what kind of image it is.
+            """
+            return "xCommand UserInterface Branding Updated"
 
 class UserInterface:
-    pass
 
     class Branding:
-        pass
-
+    
         def Upload():
-            pass
+            """
+            Uploads an image file to the device. The following image formats are supported: BMP, GIF, JPEG, and PNG, and the maximum image size is 16 megapixels. The file must be Base64 encoded, and the maximum file size is 4 MByte. The Type parameter specifies the usage of the image. If it is a background image, the associated feature (Custom wallpaper or Branding with background and logo) is automatically applied. This is a multiline command.
+            """
+            return "xCommand UserInterface Branding Upload"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         def Clear():
-            pass
+            """
+            Delete user interface extensions (custom buttons, panels, and widgets) from the device. If you don't specify an ActivityType, all extensions are deleted.
+            """
+            return "xCommand UserInterface Extensions Clear"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         def Export():
-            pass
+            """
+            Export the UserInterface Extensions as the XML result of this command. This gives the same result as extracting through the local web interface, but it can be used programmatically.
+            """
+            return "xCommand UserInterface Extensions Export"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         def List():
-            pass
+            """
+            List user interface extensions (custom buttons, panels, and widgets) that exist on the device. If you don't specify an ActivityType, all extensions are listed.
+            """
+            return "xCommand UserInterface Extensions List"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         def Set():
-            pass
+            """
+            Set the configuration scheme you have chosen in the user interface extensions (widgets) for your device. Updates the UserInterface Extensions status tree. This is a multiline command.
+            """
+            return "xCommand UserInterface Extensions Set"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Icon:
-            pass
-
+        
             def Delete():
-                pass
+                """
+                Delete an icon from the device's list of UI extension icons. Specify the id of the icon to be deleted. You can use xCommand UserInterface Extensions Icon List to get a list of all the icons with ids. If you are not sure which icon is the one you are looking for, you can use xcommand UserInterface Icon Get to get the base64-encoded value and use an internet tool to decode base64 to image.
+                """
+                return "xCommand UserInterface Extensions Icon Delete"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Icon:
-            pass
-
+        
             def DeleteAll():
-                pass
+                """
+                Delete all or a subset of UI extensions icons.
+                """
+                return "xCommand UserInterface Extensions Icon DeleteAll"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Icon:
-            pass
-
+        
             def Download():
-                pass
+                """
+                Download an icon from the specified URL and save it as a UI Extensions icon on the device.
+                """
+                return "xCommand UserInterface Extensions Icon Download"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Icon:
-            pass
-
+        
             def Fetch():
-                pass
+                """
+                Search a website for a representative icon and download this to the device for use with web apps and other UI extensions.
+                """
+                return "xCommand UserInterface Extensions Icon Fetch"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Icon:
-            pass
-
+        
             def Get():
-                pass
+                """
+                Get a base64-encoded representation of the UI Extensions icon with the specified Id. If you want to see the image, you can use an internet tool to decode base64 to image. Use xCommand UserInterface Extensions Icon List to get a list of all the icon Ids.
+                """
+                return "xCommand UserInterface Extensions Icon Get"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Icon:
-            pass
-
+        
             def List():
-                pass
+                """
+                Get a list of the unique identifiers for all the UI extension icons on the device.
+                """
+                return "xCommand UserInterface Extensions Icon List"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Icon:
-            pass
-
+        
             def Upload():
-                pass
+                """
+                Upload an icon image for use by UI extensions on the device. This is a multiline command. Provide a base64-encoded version of an image.
+                """
+                return "xCommand UserInterface Extensions Icon Upload"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Panel:
-            pass
-
+        
             def Clicked():
-                pass
+                """
+                Creates an event when the user clicks a custom panel.
+                """
+                return "xCommand UserInterface Extensions Panel Clicked"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Panel:
-            pass
-
+        
             def Close():
-                pass
+                """
+                Closes an open custom panel.
+                """
+                return "xCommand UserInterface Extensions Panel Close"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Panel:
-            pass
-
+        
             def Open():
-                pass
+                """
+                Opens the custom panel that has the given PanelId. If the panel has multiple pages you can specify which page to open by including the PageId parameter.
+                """
+                return "xCommand UserInterface Extensions Panel Open"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Panel:
-            pass
-
+        
             def Remove():
-                pass
+                """
+                Removes the custom panel from the user interface of this device.
+                """
+                return "xCommand UserInterface Extensions Panel Remove"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Panel:
-            pass
-
+        
             def Save():
-                pass
+                """
+                Adds a custom panel to the current configuration. The panel will be added to the configuration, but if a panel with the same panel ID already exists, it will be overwritten. This is a multiline command.
+                """
+                return "xCommand UserInterface Extensions Panel Save"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Panel:
-            pass
-
+        
             def Update():
-                pass
+                """
+                Updates the custom panel that has the given PanelId. Successful changes are immediately visible on the endpoint.
+                """
+                return "xCommand UserInterface Extensions Panel Update"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Widget:
-            pass
-
+        
             def Action():
-                pass
+                """
+                Sets the action of the given widget. Updates the UserInterface Extensions status tree.
+                """
+                return "xCommand UserInterface Extensions Widget Action"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Widget:
-            pass
-
+        
             def SetValue():
-                pass
+                """
+                Set the value of the given widget. Updates the UserInterface Extensions status tree. Returns an error if the value is out of range.
+                """
+                return "xCommand UserInterface Extensions Widget SetValue"
 
 class UserInterface:
-    pass
 
     class Extensions:
-        pass
-
+    
         class Widget:
-            pass
-
+        
             def UnsetValue():
-                pass
+                """
+                Empties the value of the given widget. Updates the UserInterface Extensions status tree and notifies the user interface that this widget is no longer selected.
+                """
+                return "xCommand UserInterface Extensions Widget UnsetValue"
 
 class UserInterface:
-    pass
 
     class LedControl:
-        pass
-
+    
         class Color:
-            pass
-
+        
             def Set():
-                pass
+                """
+                The wall mount version of the Room Navigator has LED lights. Use this command to specify the color and turn the LED lights on or off. The UserInterface LedControl Mode setting must be Manual for this command to have any effect.
+                """
+                return "xCommand UserInterface LedControl Color Set"
 
 class UserInterface:
-    pass
 
     class Message:
-        pass
-
+    
         class Alert:
-            pass
-
+        
             def Clear():
-                pass
+                """
+                Remove the message which was displayed using the UserInterface Message Alert Display command. This is required when the Duration parameter is not set.
+                """
+                return "xCommand UserInterface Message Alert Clear"
 
 class UserInterface:
-    pass
 
     class Message:
-        pass
-
+    
         class Alert:
-            pass
-
+        
             def Display():
-                pass
+                """
+                Display a message on screen. Optionally you can keep the message for a specified duration of time. If Duration is not set, the command must be followed by a UserInterface Message Alert Clear command.
+                """
+                return "xCommand UserInterface Message Alert Display"
 
 class UserInterface:
-    pass
 
     class Message:
-        pass
-
+    
         class Prompt:
-            pass
-
+        
             def Clear():
-                pass
+                """
+                Remove the window which was displayed using the UserInterface Message Prompt Display command. This is required when the Duration parameter is not set. Use the xFeedback commands to monitor the feedback from the user. Read more about the xFeedback commands in the API introduction section in this guide.
+                """
+                return "xCommand UserInterface Message Prompt Clear"
 
 class UserInterface:
-    pass
 
     class Message:
-        pass
-
+    
         class Prompt:
-            pass
-
+        
             def Display():
-                pass
+                """
+                Display a small window on screen with a title, text and up to five options for response from the user. The message is displayed on screen until the user gives a response, or until the device receives a UserInterface Message Prompt Clear command. Use the xFeedback commands to monitor the feedback from the user. Read more about the xFeedback commands in the API introduction section in this guide.
+                """
+                return "xCommand UserInterface Message Prompt Display"
 
 class UserInterface:
-    pass
 
     class Message:
-        pass
-
+    
         class Prompt:
-            pass
-
+        
             def Response():
-                pass
+                """
+                Give a response to the UserInterface Message Prompt Display command. This command is executed when the user selects an option in the user interface. Use the xFeedback commands to monitor the feedback from the user. Read more about the xFeedback commands in the API introduction section in this guide.
+                """
+                return "xCommand UserInterface Message Prompt Response"
 
 class UserInterface:
-    pass
 
     class Message:
-        pass
-
+    
         class Rating:
-            pass
-
+        
             def Clear():
-                pass
+                """
+                Remove the message which was displayed using the UserInterface Message Rating Display command. This is required when the Duration parameter is not set.
+                """
+                return "xCommand UserInterface Message Rating Clear"
 
 class UserInterface:
-    pass
 
     class Message:
-        pass
-
+    
         class Rating:
-            pass
-
+        
             def Display():
-                pass
+                """
+                Display a small window on screen with a title and text. Rating stars are provided for the user to select. The message is displayed on screen until the user gives a response, or until the device receives a UserInterface Message Rating Clear command. Use the xFeedback commands to monitor the feedback from the user. Read more about the xFeedback commands in the API introduction section in this guide.
+                """
+                return "xCommand UserInterface Message Rating Display"
 
 class UserInterface:
-    pass
 
     class Message:
-        pass
-
+    
         class Rating:
-            pass
-
+        
             def Response():
-                pass
+                """
+                Give a response to the UserInterface Message Rating Display command. This command is executed when the user selects an option in the user interface. Use the xFeedback commands to monitor the feedback from the user. Read more about the xFeedback commands in the API introduction section in this guide.
+                """
+                return "xCommand UserInterface Message Rating Response"
 
 class UserInterface:
-    pass
 
     class Message:
-        pass
-
+    
         class TextInput:
-            pass
-
+        
             def Clear():
-                pass
+                """
+                Remove the text input message which was displayed using the UserInterface Message TextInput Display command. This is required when the Duration parameter is not set. Use the xFeedback commands to monitor the feedback from the user. Read more about the xFeedback commands in the API introduction section in this guide.
+                """
+                return "xCommand UserInterface Message TextInput Clear"
 
 class UserInterface:
-    pass
 
     class Message:
-        pass
-
+    
         class TextInput:
-            pass
-
+        
             def Display():
-                pass
+                """
+                Displays an input dialog box to which a user can respond. This is only supported for devices with a touch-based user interface. The message is displayed on screen until the user gives a response, or until the device receives a UserInterface Message TextInput Clear command. Use the xFeedback commands to monitor the feedback from the user. Read more about the xFeedback commands in the API introduction section in this guide.
+                """
+                return "xCommand UserInterface Message TextInput Display"
 
 class UserInterface:
-    pass
 
     class Message:
-        pass
-
+    
         class TextInput:
-            pass
-
+        
             def Response():
-                pass
+                """
+                Give a response to the UserInterface Message TextInput Display command. This command is executed when the user submits the reply that he has entered in the text input field in the user interface. Use the xFeedback commands to monitor the feedback from the user. Read more about the xFeedback commands in the API introduction section in this guide.
+                """
+                return "xCommand UserInterface Message TextInput Response"
 
 class UserInterface:
-    pass
 
     class Message:
-        pass
-
+    
         class TextLine:
-            pass
-
+        
             def Clear():
-                pass
+                """
+                Remove the text line which was displayed by the UserInterface Message TextLine Display command. This is required when the Duration parameter is not set.
+                """
+                return "xCommand UserInterface Message TextLine Clear"
 
 class UserInterface:
-    pass
 
     class Message:
-        pass
-
+    
         class TextLine:
-            pass
-
+        
             def Display():
-                pass
+                """
+                Display a text line on screen. Optionally you can place the text line at a specified location and for a specified duration of time. If Duration is not set, the command must be followed by the UserInterface Message TextLine Clear command.
+                """
+                return "xCommand UserInterface Message TextLine Display"
 
 class UserInterface:
-    pass
 
     class Presentation:
-        pass
-
+    
         class ExternalSource:
-            pass
-
+        
             def Add():
-                pass
+                """
+                Establish and set up an input source that is connected to the device via an external switch.
+                """
+                return "xCommand UserInterface Presentation ExternalSource Add"
 
 class UserInterface:
-    pass
 
     class Presentation:
-        pass
-
+    
         class ExternalSource:
-            pass
-
+        
             def List():
-                pass
+                """
+                Returns the current list of external input sources.
+                """
+                return "xCommand UserInterface Presentation ExternalSource List"
 
 class UserInterface:
-    pass
 
     class Presentation:
-        pass
-
+    
         class ExternalSource:
-            pass
-
-            def Remove():
-                pass
+        
+            def List():
+                """
+                Returns the current list of external input sources.
+                """
+                return "xCommand UserInterface Presentation ExternalSource List"
 
 class UserInterface:
-    pass
 
     class Presentation:
-        pass
-
+    
         class ExternalSource:
-            pass
-
+        
             def RemoveAll():
-                pass
+                """
+                Remove all input sources from the list of external input sources.
+                """
+                return "xCommand UserInterface Presentation ExternalSource RemoveAll"
 
 class UserInterface:
-    pass
 
     class Presentation:
-        pass
-
+    
         class ExternalSource:
-            pass
-
+        
             def Select():
-                pass
+                """
+                Starts to present the input source (specified by the SourceIdentifier) if it is in Ready state (see the UserInterface Presentation ExternalSource State Set command). The input source will be shown in the user interface sharetray as "Presenting".
+                """
+                return "xCommand UserInterface Presentation ExternalSource Select"
 
 class UserInterface:
-    pass
 
     class Presentation:
-        pass
-
+    
         class ExternalSource:
-            pass
-
+        
             class State:
-                pass
-
+            
                 def Set():
-                    pass
+                    """
+                    Set or change the state of the input source (specified by the SourceIdentifier).
+                    """
+                    return "xCommand UserInterface Presentation ExternalSource State Set"
 
 class UserInterface:
-    pass
 
     class Translation:
-        pass
-
+    
         class Override:
-            pass
-
+        
             def Clear():
-                pass
+                """
+                Clear all translation overrides.
+                """
+                return "xCommand UserInterface Translation Override Clear"
 
 class UserInterface:
-    pass
 
     class Translation:
-        pass
-
+    
         class Override:
-            pass
-
+        
             def Get():
-                pass
+                """
+                Returns the translation override information in JSON format. If no translation override is set, it will return an error.
+                """
+                return "xCommand UserInterface Translation Override Get"
 
 class UserInterface:
-    pass
 
     class Translation:
-        pass
-
+    
         class Override:
-            pass
-
-            class Set:
-                pass
-
-                class Raw:
-                    pass
-
-                    class data:
-                        pass
-
-                        class here...:
-                            pass
-
-                            class Must:
-                                pass
-
-                                class end:
-                                    pass
-
-                                    class with:
-                                        pass
-
-                                        class line:
-                                            pass
-
-                                            class with:
-                                                pass
-
-                                                class single:
-                                                    pass
-
-                                                    class dot:
-                                                        pass
-
-                                                        def .():
-                                                            pass
-
-class UserInterface:
-    pass
-
-    class WallpaperBundle:
-        pass
-
-        def Clear():
-            pass
-
-class UserInterface:
-    pass
-
-    class WallpaperBundle:
-        pass
-
-        def List():
-            pass
-
-class UserInterface:
-    pass
-
-    class WallpaperBundle:
-        pass
-
-        def Set():
-            pass
-
-class UserInterface:
-    pass
-
-    class WebView:
-        pass
-
-        def Clear():
-            pass
-
-class UserInterface:
-    pass
-
-    class WebView:
-        pass
-
-        def Display():
-            pass
-
-class UserManagement:
-    pass
-
-    class RemoteSupportUser:
-        pass
-
-        def Create():
-            pass
-
-class UserManagement:
-    pass
-
-    class RemoteSupportUser:
-        pass
-
-        def Delete():
-            pass
-
-class UserManagement:
-    pass
-
-    class RemoteSupportUser:
-        pass
-
-        def DisablePermanently():
-            pass
-
-class UserManagement:
-    pass
-
-    class RemoteSupportUser:
-        pass
-
-        def GetState():
-            pass
-
-class UserManagement:
-    pass
-
-    class User:
-        pass
-
-        def Add():
-            pass
-
-class UserManagement:
-    pass
-
-    class User:
-        pass
-
-        def Delete():
-            pass
-
-class UserManagement:
-    pass
-
-    class User:
-        pass
-
-        def Get():
-            pass
-
-class UserManagement:
-    pass
-
-    class User:
-        pass
-
-        def List():
-            pass
-
-class UserManagement:
-    pass
-
-    class User:
-        pass
-
-        def Modify():
-            pass
-
-class UserManagement:
-    pass
-
-    class User:
-        pass
-
-        def Unblock():
-            pass
-
-class UserManagement:
-    pass
-
-    class User:
-        pass
-
-        class Passphrase:
-            pass
-
-            def Change():
-                pass
-
-class UserManagement:
-    pass
-
-    class User:
-        pass
-
-        class Passphrase:
-            pass
-
+        
             def Set():
-                pass
+                """
+                Set a translation override for text on the user interface. For instance, change the title "Whiteboard" to "whiteboard collection", or whatever you like. This is a multiline command that expects the override set in JSON format. For example: { "version": 1, "translations": [ { "sourceText": "Whiteboard", "translated": "WB", "language": "English" } ] } sourceText: The English version of the text to be replaced. translated: The text to use as the replacement for the language th...
+                """
+                return "xCommand UserInterface Translation Override Set"
+
+class UserInterface:
+
+    class WallpaperBundle:
+    
+        def Clear():
+            """
+            Not applicable in this release.
+            """
+            return "xCommand UserInterface WallpaperBundle Clear"
+
+class UserInterface:
+
+    class WallpaperBundle:
+    
+        def List():
+            """
+            Not applicable in this release.
+            """
+            return "xCommand UserInterface WallpaperBundle List"
+
+class UserInterface:
+
+    class WallpaperBundle:
+    
+        def Set():
+            """
+            Not applicable in this release.
+            """
+            return "xCommand UserInterface WallpaperBundle Set"
+
+class UserInterface:
+
+    class WebView:
+    
+        def Clear():
+            """
+            Closes the web view.
+            """
+            return "xCommand UserInterface WebView Clear"
+
+class UserInterface:
+
+    class WebView:
+    
+        def Display():
+            """
+            Opens the web view and displays the web page given by the URL.
+            """
+            return "xCommand UserInterface WebView Display"
+
+class UserManagement:
+
+    class RemoteSupportUser:
+    
+        def Create():
+            """
+            Create a remote support user passphrase that Technical Assistance Center (TAC) can use to access the device for troubleshooting.
+            """
+            return "xCommand UserManagement RemoteSupportUser Create"
+
+class UserManagement:
+
+    class RemoteSupportUser:
+    
+        def Delete():
+            """
+            Delete the remote support user created with the command xCommand UserManagement RemoteSupportUser Create.
+            """
+            return "xCommand UserManagement RemoteSupportUser Delete"
+
+class UserManagement:
+
+    class RemoteSupportUser:
+    
+        def DisablePermanently():
+            """
+            Disable the creation of new remote support users. To enable the remote support user again you must factory reset your device.
+            """
+            return "xCommand UserManagement RemoteSupportUser DisablePermanently"
+
+class UserManagement:
+
+    class RemoteSupportUser:
+    
+        def GetState():
+            """
+            Retrieves the state of the generated remote support user, if one exists.
+            """
+            return "xCommand UserManagement RemoteSupportUser GetState"
+
+class UserManagement:
+
+    class User:
+    
+        def Add():
+            """
+            Adds a new user to this device.
+            """
+            return "xCommand UserManagement User Add"
+
+class UserManagement:
+
+    class User:
+    
+        def Delete():
+            """
+            Deletes a user from this device.
+            """
+            return "xCommand UserManagement User Delete"
+
+class UserManagement:
+
+    class User:
+    
+        def Get():
+            """
+            Shows the details of a user on this device. You must supply either a Username or ClientCertificateDN to identify the user.
+            """
+            return "xCommand UserManagement User Get"
+
+class UserManagement:
+
+    class User:
+    
+        def List():
+            """
+            Shows the list of users on this device.
+            """
+            return "xCommand UserManagement User List"
+
+class UserManagement:
+
+    class User:
+    
+        def Modify():
+            """
+            Modifies the details of a particular user.
+            """
+            return "xCommand UserManagement User Modify"
+
+class UserManagement:
+
+    class User:
+    
+        def Unblock():
+            """
+            Unblocks a user who is blocked out because of too many failed login attempts.
+            """
+            return "xCommand UserManagement User Unblock"
+
+class UserManagement:
+
+    class User:
+    
+        class Passphrase:
+        
+            def Change():
+                """
+                Change the passphrase for the user you are logged in as. If you are logged in as the administrator, this will change the administrator passphrase.
+                """
+                return "xCommand UserManagement User Passphrase Change"
+
+class UserManagement:
+
+    class User:
+    
+        class Passphrase:
+        
+            def Set():
+                """
+                Set a passphrase for the specified user. You must be logged in as an administrator to set a user's passphrase.
+                """
+                return "xCommand UserManagement User Passphrase Set"
 
 class Video:
-    pass
 
     class ActiveSpeakerPIP:
-        pass
-
+    
         def Set():
-            pass
+            """
+            Sets position for the active speakers PiP (picture in picture).
+            """
+            return "xCommand Video ActiveSpeakerPIP Set"
 
 class Video:
-    pass
 
     class CEC:
-        pass
-
+    
         class Input:
-            pass
-
+        
             def KeyClick():
-                pass
+                """
+                Mimics a remote control key click event from the input device.
+                """
+                return "xCommand Video CEC Input KeyClick"
 
 class Video:
-    pass
 
     class CEC:
-        pass
-
+    
         class Output:
-            pass
-
+        
             def KeyClick():
-                pass
+                """
+                Mimics a remote control key click event from this device.
+                """
+                return "xCommand Video CEC Output KeyClick"
 
 class Video:
-    pass
 
     class CEC:
-        pass
-
+    
         class Output:
-            pass
-
+        
             def SendActiveSourceRequest():
-                pass
+                """
+                A request from the video conferencing device to become the active source of the screen (device) that is connected to the specified output connector.
+                """
+                return "xCommand Video CEC Output SendActiveSourceRequest"
 
 class Video:
-    pass
 
     class CEC:
-        pass
-
+    
         class Output:
-            pass
-
+        
             def SendInactiveSourceRequest():
-                pass
+                """
+                A request from the video conferencing device to stop being the active source of the screen (device) that is connected to the specified output connector. It is up to the screen to decide how to respond to the request. It can become the active source itself, make another source the active one, or do nothing.
+                """
+                return "xCommand Video CEC Output SendInactiveSourceRequest"
 
 class Video:
-    pass
 
     class Graphics:
-        pass
-
+    
         def Clear():
-            pass
+            """
+            Remove a text string that has been added to the main video stream, the presentation stream, or the local output using the Video Graphics Text Display command. If you don't want to remove the text string from all those places, you can use multiple Target parameters to choose a subset.
+            """
+            return "xCommand Video Graphics Clear"
 
 class Video:
-    pass
 
     class Graphics:
-        pass
-
+    
         class Text:
-            pass
-
+        
             def Display():
-                pass
+                """
+                Compose a text string that will be added to the main video stream, the presentation stream, and the local output. If you don't want to add the text string all those places, you can use multiple Target parameters to choose a subset.
+                """
+                return "xCommand Video Graphics Text Display"
 
 class Video:
-    pass
 
     class Input:
-        pass
-
+    
         def SetMainVideoSource():
-            pass
+            """
+            Set which input source is the main video source. You can identify the input source by either the physical connector that it is connected to (ConnectorId) or the logical source identifier (SourceId). You can combine multiple input sources in a single main video stream (the maximum number of different input sources depend on the type of video conferencing device) by adding multiple ConnectorIds or SourceIds in the same command. There cannot be a mix of identifier types in the same command; use eit...
+            """
+            return "xCommand Video Input SetMainVideoSource"
 
 class Video:
-    pass
 
     class Input:
-        pass
-
+    
         class MainVideo:
-            pass
-
+        
             def Mute():
-                pass
+                """
+                Stop sending video from the device. Selfview is also turned off. This command does not affect the presentation channel.
+                """
+                return "xCommand Video Input MainVideo Mute"
 
 class Video:
-    pass
 
     class Input:
-        pass
-
+    
         class MainVideo:
-            pass
-
+        
             def Unmute():
-                pass
+                """
+                Start sending video from the device if previously turned off using the Video Input MainVideo Mute command (or, if available, the "Turn off video" button on the user interface). Selfview is also available.
+                """
+                return "xCommand Video Input MainVideo Unmute"
 
 class Video:
-    pass
 
     class Layout:
-        pass
-
+    
         def SetLayout():
-            pass
+            """
+            Select which video layout family to use locally. You must choose a value from the list returned by the Video Layout CurrentLayouts AvailableLayouts[n] LayoutName status.
+            """
+            return "xCommand Video Layout SetLayout"
 
 class Video:
-    pass
 
     class Layout:
-        pass
-
+    
         class LayoutFamily:
-            pass
-
+        
             def Set():
-                pass
+                """
+                Select which video layout family to use locally. This setting applies only when using a device's built-in MultiSite feature (optional) to host a multipoint video conference.
+                """
+                return "xCommand Video Layout LayoutFamily Set"
 
 class Video:
-    pass
 
     class Matrix:
-        pass
-
+    
         def Assign():
-            pass
+            """
+            Video Matrix commands are a smart overlay to the xCommand Video Layout commands to make it easy to do simple video compositions.
+            """
+            return "xCommand Video Matrix Assign"
 
 class Video:
-    pass
 
     class Matrix:
-        pass
-
+    
         def Reset():
-            pass
+            """
+            Reset the content on the output to the default layout xCommand Video Matrix commands are a smart overlay to the xCommand Video Layout commands to make it easy to do simple video compositions.
+            """
+            return "xCommand Video Matrix Reset"
 
 class Video:
-    pass
 
     class Matrix:
-        pass
-
+    
         def Swap():
-            pass
+            """
+            Swap the content defined with xCommand Video Matrix Assign between two outputs. xCommand Video Matrix commands are a smart overlay to the xCommand Video Layout commands to make it easy to do simple video compositions.
+            """
+            return "xCommand Video Matrix Swap"
 
 class Video:
-    pass
 
     class Matrix:
-        pass
-
+    
         def Unassign():
-            pass
+            """
+            Remove a source from an output. Just as with xCommand Video Matrix Assign the layout engine will recompose the remaining sources automatically. xCommand Video Matrix commands are a smart overlay to the xCommand Video Layout commands to make it easy to do simple video compositions.
+            """
+            return "xCommand Video Matrix Unassign"
 
 class Video:
-    pass
 
     class Output:
-        pass
-
+    
         class HDMI:
-            pass
-
+        
             class Passthrough:
-                pass
-
+            
                 def Start():
-                    pass
+                    """
+                    
+                    """
+                    return "xCommand Video Output HDMI Passthrough Start"
 
 class Video:
-    pass
 
     class Output:
-        pass
-
+    
         class HDMI:
-            pass
-
+        
             class Passthrough:
-                pass
-
+            
                 def Stop():
-                    pass
+                    """
+                    
+                    """
+                    return "xCommand Video Output HDMI Passthrough Stop"
 
 class Video:
-    pass
 
     class PresentationPIP:
-        pass
-
+    
         def Set():
-            pass
+            """
+            Sets position for the presentation PiP (picture in picture).
+            """
+            return "xCommand Video PresentationPIP Set"
 
 class Video:
-    pass
 
     class PresentationView:
-        pass
-
+    
         def Set():
-            pass
+            """
+            Set the presentation view mode
+            """
+            return "xCommand Video PresentationView Set"
 
 class Video:
-    pass
 
     class Selfview:
-        pass
-
+    
         def Set():
-            pass
+            """
+            Sets self-view on/off and specifies its size and position. If the parameter is not specified, current value is used.
+            """
+            return "xCommand Video Selfview Set"
 
 class WebEngine:
-    pass
 
     def DeleteStorage():
-        pass
+        """
+        Deletes session data for web view types, such as digital signage and web apps.
+        """
+        return "xCommand WebEngine DeleteStorage"
 
 class WebRTC:
-    pass
 
     def Join():
-        pass
+        """
+        Join a WebRTC meeting (for example, Microsoft Teams or Google Meet). WebRTC is only available for devices that are registered to an on-premises service and linked to Webex Edge for Devices, and for devices that are registered to the Webex cloud service.
+        """
+        return "xCommand WebRTC Join"
 
 class WebRTC:
-    pass
 
     class Provider:
-        pass
-
+    
         class Current:
-            pass
-
+        
             class Diagnostics:
-                pass
-
+            
                 def Send():
-                    pass
+                    """
+                    Sends diagnostics from the WebRTC meeting app (for example, Microsoft Teams) to the meeting provider (for example, Microsoft). These diagnostics are not available to Cisco. WebRTC is only available for devices that are registered to an on-premises service and linked to Webex Edge for Devices, and for devices that are registered to the Webex cloud service.
+                    """
+                    return "xCommand WebRTC Provider Current Diagnostics Send"
 
 class WebRTC:
-    pass
 
     class Provider:
-        pass
-
+    
         class GoogleMeet:
-            pass
-
+        
             class MeetingNumber:
-                pass
-
+            
                 def Validate():
-                    pass
+                    """
+                    Validates the meeting number provided for a Google Meet meeting. WebRTC is only available for devices that are registered to an on-premises service and linked to Webex Edge for Devices, and for devices that are registered to the Webex cloud service. Google Meet is not currently available on Desk.
+                    """
+                    return "xCommand WebRTC Provider GoogleMeet MeetingNumber Validate"
 
 class Webex:
-    pass
 
     def Join():
-        pass
+        """
+        Join the Webex Meeting specified by the meeting number. Add optional information, such as the display name or a tag, to identify the call in the call history.
+        """
+        return "xCommand Webex Join"
 
 class Webex:
-    pass
 
     class Registration:
-        pass
-
+    
         def Cancel():
-            pass
+            """
+            Cancel device registration to Cisco Webex. This command only works in the short period after the registration is started with xCommand Webex Registration Start.
+            """
+            return "xCommand Webex Registration Cancel"
 
 class Webex:
-    pass
 
     class Registration:
-        pass
-
+    
         def ConvertToCloud():
-            pass
+            """
+            Convert a device to be managed by the Cisco Webex cloud service. This is only available on systems linked with Webex Edge for Devices. All current connections to on-premises services for calling and directory will be replaced with cloud data sources. To convert back to on-premises again, the device must factory reset.
+            """
+            return "xCommand Webex Registration ConvertToCloud"
 
 class Webex:
-    pass
 
     class Registration:
-        pass
-
+    
         def Logout():
-            pass
+            """
+            Log a user out from a personalized system, typically Hot Desked shared system or personalized Webex Edge device.
+            """
+            return "xCommand Webex Registration Logout"
 
 class Webex:
-    pass
 
     class Registration:
-        pass
-
+    
         def Start():
-            pass
+            """
+            Register a device to the Webex cloud service, or link it to Webex Edge for Devices, by entering the device activation code. Also choose whether to keep or deactivate existing local users and macros. Unless you add the AccountLinkMode parameter, you will get a confirmation that the registration has been successful or failed.
+            """
+            return "xCommand Webex Registration Start"
 

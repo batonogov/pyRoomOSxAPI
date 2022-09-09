@@ -5,24 +5,37 @@ from selenium.webdriver.common.by import By
 from tqdm import tqdm
 
 
+TEMP = []
+
 # Генератор стукруты из списка
-def generator(data, file, indent = ' ' * 4):
+def generator(data, file, info, indent = ' ' * 4):
     '''Generate data from xapi and write data to file'''
     try:
-        colon_finder = [c for c in range(len(data)) if ':' in data[c]]
+        colon_finder = [c for c in range(len(data)) if ':' in data[c] or 'Raw' in data[c]]
         data = data[:colon_finder[0]]
     except:
         pass
-    print(data)
-    
+
+    # print(data)
+    TEMP.append(data)
+
+    try:
+        print('Данные:', TEMP[-1], TEMP[-2])
+        print('Сравнение:', list(set(TEMP[-1]) & set(TEMP[-2])))
+        print('Разность:', list(set(TEMP[-1]) ^ set(TEMP[-2])), '\n')
+    except:
+        pass
+
     for i in enumerate(data[1:]):
         name = i[1]
-        print(i)
+        # print(i[0], i[1])
         compare = i[0]+1 != len(data[1:])
         if compare:
-            file.write(f'{indent * i[0]}class {name}:\n{indent * i[0]}    pass\n\n')
+            file.write(f'{indent * i[0]}class {name}:\n{indent * i[0]}\n')
         elif not compare:
-            file.write(f'{indent * i[0]}def {name}():\n{indent * i[0]}    pass\n\n')
+            file.write(f'{indent * i[0]}def {name}():\n{indent * i[0]}    """\n{indent * i[0]}    {" ".join(info)}\n{indent * i[0]}    """\n{indent * i[0]}    return "{" ".join(data)}"\n\n')
+
+    # print(TEMP)
 
 # Запрос перечня ссылок на группы комманд
 def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name=None):
@@ -61,53 +74,24 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
                         'language-javascript'
                         ).text.split()
 
-                    generator(switcher, file)
-
-                except Exception as exception:
-                    print(exception)
-
-                # try:
-                #     info = driver.find_element(By.CLASS_NAME, 'info').text.split()
-                #     print(len(info), f'{info}\n')
-                #     f.write(f"        '''\n            {' '.join(info)}\n        '''\n")
-                # except Exception as e:
-                #     print(e)
+                    info = driver.find_element(By.CLASS_NAME, 'info').text.split()
+                except:
+                    pass
 
                 # try:
                 #     param = driver.find_element(By.CLASS_NAME, 'param').text
-                #     print(f'{param}\n')
-                #     f.write(f'{param}\n')
+                #     print(f"'''\n{param}\n'''\n\n")
+                #     file.write(f"'''\n{param}\n'''\n\n")
                 # except:
                 #     pass
 
                 # try:
                 #     props = driver.find_element(By.CLASS_NAME, 'props').text
-                #     print(f'{props}\n')
-                #     f.write(f'{props}\n')
+                #     print(f"'''\n{props}\n'''\n\n")
+                #     file.write(f"'''\n{props}\n'''\n\n")
                 # except:
                 #     pass
 
-    # # Перебор xConfiguration
-    # driver.find_element(By.CSS_SELECTOR, "#app > div > form > div.type-buttons.filter > button:nth-child(3)").click()
-    # for i in range(len(reference)):
-    #     driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/domain/?domain={reference[i]}")]').click()
-    #     cfg_line = ['.'.join(p) for p in [c.split()[1:] for c in [c.text for c in driver.find_elements(By.CLASS_NAME, 'node-path')]]]
-    #     for i in range(len(cfg_line)):
-    #         driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/Configuration.{cfg_line[i]}/")]').click()
-    # # Перебор xStatus
-    # driver.find_element(By.CSS_SELECTOR, "#app > div > form > div.type-buttons.filter > button:nth-child(4)").click()
-    # for i in range(len(reference)):
-    #     driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/domain/?domain={reference[i]}")]').click()
-    #     status_line = ['.'.join(p) for p in [c.split()[1:] for c in [c.text for c in driver.find_elements(By.CLASS_NAME, 'node-path')]]]
-    #     for i in range(len(status_line)):
-    #         driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/Status.{status_line[i]}/")]').click()
-
-    # # Перебор Event
-    # driver.find_element(By.CSS_SELECTOR, "#app > div > form > div.type-buttons.filter > button:nth-child(5)").click()
-    # for i in range(len(reference)):
-    #     driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/domain/?domain={reference[i]}")]').click()
-    #     event_line = ['.'.join(p) for p in [c.split()[1:] for c in [c.text for c in driver.find_elements(By.CLASS_NAME, 'node-path')]]]
-    #     for i in range(len(event_line)):
-    #         driver.find_element(By.XPATH, f'//a[contains(@href,"/xapi/Event.{event_line[i]}/")]').click()
+                generator(data=switcher, file=file, info=info)
 
 xapi_cmd(output_file_name='xCommand.py')
