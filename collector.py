@@ -1,13 +1,13 @@
 '''Data collector'''
 import time
+from textwrap import wrap
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from progress.spinner import Spinner
-from textwrap import wrap
 
 
 TEMP = []
-# Temporary list for checking duplicates 
+# Temporary list for checking duplicates
 TEMP_LINES = []
 
 # Генератор стукруты из списка
@@ -27,8 +27,10 @@ def generator(data, file, info, indent = ' ' * 4):
             my_line = f'{indent*i[0]}class {name}:\n{indent*i[0]}\n'
         elif not compare:
             info_line = f'\n{indent*i[0]}{indent}'.join(wrap(' '.join(info), 80)) # Wrap string
-            my_line = f'{indent*i[0]}def {name}():\n{indent*i[0]}    """{info_line}"""\n{indent*i[0]}    return "{" ".join(data)}"\n\n'
-        
+            my_line = f'{indent*i[0]}def {name}():\
+                \n{indent*i[0]}    """{info_line}"""\
+                \n{indent*i[0]}    return "{" ".join(data)}"\n\n'
+
         if my_line not in TEMP_LINES:
             TEMP_LINES.append(my_line)
             file.write(my_line)
@@ -91,6 +93,9 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
                 #     file.write(f"'''\n{props}\n'''\n\n")
                 # except:
                 #     pass
+
+                print('REFERENCE:', reference, '\n')
+                print('INFO:', info, '\n')
 
                 generator(data=switcher, file=file, info=info)
 
