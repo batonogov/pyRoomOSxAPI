@@ -3,6 +3,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from progress.spinner import Spinner
+from textwrap import wrap
 
 
 TEMP = []
@@ -24,11 +25,11 @@ def generator(data, file, info, indent = ' ' * 4):
         # print(i[0], i[1])
         compare = i[0]+1 != len(data[1:])
         if compare:
-            file.write(f'{indent * i[0]}class {name}:\n{indent * i[0]}\n')
+            file.write(f'{indent*i[0]}class {name}:\n{indent*i[0]}\n')
         elif not compare:
+            info_line = f'\n{indent*i[0]}{indent}'.join(wrap(' '.join(info), 100))
             file.write(
-                f'{indent * i[0]}def {name}():\n{indent * i[0]}    """{" ".join(info)}"""\
-                    \n{indent * i[0]}    return "{" ".join(data)}"\n\n'
+                f'{indent*i[0]}def {name}():\n{indent*i[0]}    """{info_line}"""\n{indent*i[0]}    return "{" ".join(data)}"\n\n'
                 )
 
     # print(TEMP)
@@ -101,10 +102,11 @@ if __name__ == '__main__':
         temp = []
 
         for x in my_string:
-            if x not in temp or 'def ' in x:
-                temp.append(x)
+            print(x)
+    #         if x not in temp:
+    #             temp.append(x)
 
-    with open('./pyroomos/xCommand.py', 'w', encoding='utf-8') as my_file:
-        my_file.writelines(temp)
+    # with open('./pyroomos/xCommand.py', 'w', encoding='utf-8') as my_file:
+    #     my_file.writelines(temp)
 
-    print('done')
+    print('\ndone')
