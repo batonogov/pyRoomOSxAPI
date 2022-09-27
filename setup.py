@@ -1,5 +1,6 @@
+'''Build script for pypi'''
 import setuptools
-import pyRoomOSxAPI
+import pyroomos
 
 
 with open('README.md', 'r', encoding='utf-8') as file:
@@ -10,7 +11,7 @@ with open('README.md', 'r', encoding='utf-8') as file:
 
 setuptools.setup(
     name='pyRoomOSxAPI',
-    version=pyRoomOSxAPI.__version__,
+    version=pyroomos.__version__,
     author='Fedor Batonogov',
     author_email='batonogov@icloud.com',
     description='Simple implementation RoomOS xAPI',

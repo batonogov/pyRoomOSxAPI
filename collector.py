@@ -1,30 +1,23 @@
-'''Data colector'''
+'''Data collector'''
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from tqdm import tqdm
+from progress.spinner import Spinner
 
 
 TEMP = []
 
+spinner = Spinner('Get data ')
+
 # Генератор стукруты из списка
 def generator(data, file, info, indent = ' ' * 4):
     '''Generate data from xapi and write data to file'''
-    try:
-        colon_finder = [c for c in range(len(data)) if ':' in data[c] or 'Raw' in data[c]]
+    colon_finder = [c for c in range(len(data)) if ':' in data[c] or 'Raw' in data[c]]
+    if colon_finder:
         data = data[:colon_finder[0]]
-    except:
-        pass
 
     # print(data)
     TEMP.append(data)
-
-    try:
-        print('Данные:', TEMP[-1], TEMP[-2])
-        print('Сравнение:', list(set(TEMP[-1]) & set(TEMP[-2])))
-        print('Разность:', list(set(TEMP[-1]) ^ set(TEMP[-2])), '\n')
-    except:
-        pass
 
     for i in enumerate(data[1:]):
         name = i[1]
@@ -33,14 +26,18 @@ def generator(data, file, info, indent = ' ' * 4):
         if compare:
             file.write(f'{indent * i[0]}class {name}:\n{indent * i[0]}\n')
         elif not compare:
-            file.write(f'{indent * i[0]}def {name}():\n{indent * i[0]}    """\n{indent * i[0]}    {" ".join(info)}\n{indent * i[0]}    """\n{indent * i[0]}    return "{" ".join(data)}"\n\n')
+            file.write(
+                f'{indent * i[0]}def {name}():\n{indent * i[0]}    """{" ".join(info)}"""\
+                    \n{indent * i[0]}    return "{" ".join(data)}"\n\n'
+                )
 
     # print(TEMP)
 
 # Запрос перечня ссылок на группы комманд
 def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name=None):
     '''Get links on command groups'''
-    with open(f'pyRoomOSxAPI/{output_file_name}', 'w', encoding='utf-8') as file:
+
+    with open(f'pyroomos/{output_file_name}', 'w', encoding='utf-8') as file:
         driver = webdriver.Chrome()
         driver.get(url)
         time.sleep(1)
@@ -55,28 +52,30 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
             ).click()
 
         for i in enumerate(reference):
+            spinner.next()
             driver.find_element(
                 By.XPATH,
                 f'//a[contains(@href,"/xapi/domain/?domain={reference[i[0]]}")]'
                 ).click()
 
-            command_line = ['.'.join(p) for p in [c.split()[1:] for c in [c.text for c in driver.find_elements(By.CLASS_NAME, 'node-path')]]]
+            command_line = [
+                '.'.join(p) for p in [c.split()[1:] for c in \
+                    [c.text for c in driver.find_elements(By.CLASS_NAME, 'node-path')]]
+                ]
+
             for j in enumerate(command_line):
                 driver.find_element(
                     By.XPATH,
                     f'//a[contains(@href,"/xapi/Command.{command_line[j[0]]}/")]'
                     ).click()
 
-                try:
-                    driver.find_element(By.CLASS_NAME, 'switcher').click()
-                    switcher = driver.find_element(
-                        By.CLASS_NAME,
-                        'language-javascript'
-                        ).text.split()
+                driver.find_element(By.CLASS_NAME, 'switcher').click()
+                switcher = driver.find_element(
+                    By.CLASS_NAME,
+                    'language-javascript'
+                    ).text.split()
 
-                    info = driver.find_element(By.CLASS_NAME, 'info').text.split()
-                except:
-                    pass
+                info = driver.find_element(By.CLASS_NAME, 'info').text.split()
 
                 # try:
                 #     param = driver.find_element(By.CLASS_NAME, 'param').text
@@ -94,4 +93,18 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
 
                 generator(data=switcher, file=file, info=info)
 
-xapi_cmd(output_file_name='xCommand.py')
+if __name__ == '__main__':
+    xapi_cmd(output_file_name='xCommand.py')
+
+    with open('./pyroomos/xCommand.py', 'r', encoding='utf-8') as my_file:
+        my_string = my_file.readlines()
+        temp = []
+
+        for x in my_string:
+            if x not in temp or 'def ' in x:
+                temp.append(x)
+
+    with open('./pyroomos/xCommand.py', 'w', encoding='utf-8') as my_file:
+        my_file.writelines(temp)
+
+    print('done')
