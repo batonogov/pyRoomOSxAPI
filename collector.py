@@ -7,8 +7,8 @@ from textwrap import wrap
 
 
 TEMP = []
-
-spinner = Spinner('Get data ')
+# Temporary list for checking duplicates 
+TEMP_LINES = []
 
 # Генератор стукруты из списка
 def generator(data, file, info, indent = ' ' * 4):
@@ -17,7 +17,6 @@ def generator(data, file, info, indent = ' ' * 4):
     if colon_finder:
         data = data[:colon_finder[0]]
 
-    # print(data)
     TEMP.append(data)
 
     for i in enumerate(data[1:]):
@@ -25,14 +24,14 @@ def generator(data, file, info, indent = ' ' * 4):
         # print(i[0], i[1])
         compare = i[0]+1 != len(data[1:])
         if compare:
-            file.write(f'{indent*i[0]}class {name}:\n{indent*i[0]}\n')
+            my_line = f'{indent*i[0]}class {name}:\n{indent*i[0]}\n'
         elif not compare:
-            info_line = f'\n{indent*i[0]}{indent}'.join(wrap(' '.join(info), 100))
-            file.write(
-                f'{indent*i[0]}def {name}():\n{indent*i[0]}    """{info_line}"""\n{indent*i[0]}    return "{" ".join(data)}"\n\n'
-                )
-
-    # print(TEMP)
+            info_line = f'\n{indent*i[0]}{indent}'.join(wrap(' '.join(info), 80)) # Wrap string
+            my_line = f'{indent*i[0]}def {name}():\n{indent*i[0]}    """{info_line}"""\n{indent*i[0]}    return "{" ".join(data)}"\n\n'
+        
+        if my_line not in TEMP_LINES:
+            TEMP_LINES.append(my_line)
+            file.write(my_line)
 
 # Запрос перечня ссылок на группы комманд
 def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name=None):
@@ -42,6 +41,7 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
         driver = webdriver.Chrome()
         driver.get(url)
         time.sleep(1)
+        spinner = Spinner('Get data ')
 
         # Пакуем группы команд
         reference = driver.find_element(By.CLASS_NAME, 'sub-menu').text.split('\n')
@@ -96,17 +96,4 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
 
 if __name__ == '__main__':
     xapi_cmd(output_file_name='xCommand.py')
-
-    with open('./pyroomos/xCommand.py', 'r', encoding='utf-8') as my_file:
-        my_string = my_file.readlines()
-        temp = []
-
-        for x in my_string:
-            print(x)
-    #         if x not in temp:
-    #             temp.append(x)
-
-    # with open('./pyroomos/xCommand.py', 'w', encoding='utf-8') as my_file:
-    #     my_file.writelines(temp)
-
     print('\ndone')
