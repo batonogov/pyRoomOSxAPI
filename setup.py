@@ -13,7 +13,7 @@ setuptools.setup(
     name='pyRoomOSxAPI',
     version=pyroomos.__version__,
     author='Fedor Batonogov',
-    author_email='batonogov@icloud.com',
+    author_email='f.batonogov@yandex.ru',
     description='Simple implementation RoomOS xAPI',
     long_description=long_description,
     long_description_content_type="text/markdown",

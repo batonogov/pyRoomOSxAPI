@@ -42,7 +42,7 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
     with open(f'pyroomos/{output_file_name}', 'w', encoding='utf-8') as file:
         driver = webdriver.Chrome()
         driver.get(url)
-        time.sleep(1)
+        time.sleep(10)
         spinner = Spinner('Get data ')
 
         # Пакуем группы команд

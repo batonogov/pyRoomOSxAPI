@@ -8,8 +8,8 @@ Supported xAPI version: `10.15.1.6`!
 
 ---
 
-> from pyRoomOSxAPI import xCommand
+> from pyroomos import xCommand
 
-> from pyRoomOSxAPI import xConfiguration
+> from pyroomos import xConfiguration
 
-> from pyRoomOSxAPI import xFeedback
+> from pyroomos import xFeedback

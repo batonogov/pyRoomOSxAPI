@@ -591,6 +591,10 @@ class Conference:
         cloud service or linked to Webex Edge for Devices."""                
         return "xCommand Conference MuteOnEntry"
 
+    def SkinTone():                
+        """"""                
+        return "xCommand Conference SkinTone"
+
     def TransferHostAndLeave():                
         """Lets you leave a meeting you are hosting, but allows the other particpants to
         continue the meeting. A new host is assigned automatically"""                
@@ -694,14 +698,6 @@ class Conference:
             """Sends a reaction (emoji) during a Webex meeting. The device must either be
             registered to the Webex cloud service or linked to Webex Edge for Devices."""                
             return "xCommand Conference Reaction Send"
-
-        def Tone():                
-            """Selects the skin tone to be used for the emojis sent hereafter. Skin tones are
-            available for reactions that use hand gestures, such as thumbs up and clapping
-            hands. For personal mode devices the skin tone will persist between calls; for
-            shared mode devices it will be reset when a call ends. The device must either be
-            registered to the Webex cloud service or linked to Webex Edge for Devices."""                
-            return "xCommand Conference Reaction Tone"
 
     class Recording:
     
@@ -1671,6 +1667,12 @@ class UserInterface:
                 """Updates the custom panel that has the given PanelId. Successful changes are
                 immediately visible on the endpoint."""                
                 return "xCommand UserInterface Extensions Panel Update"
+
+        class WebApp:
+        
+            def Save():                
+                """"""                
+                return "xCommand UserInterface Extensions WebApp Save"
 
         class Widget:
         
