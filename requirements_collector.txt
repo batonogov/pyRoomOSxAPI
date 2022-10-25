@@ -1,3 +1,2 @@
-paramiko==2.11.0
 selenium==4.2.0
 progress==1.6

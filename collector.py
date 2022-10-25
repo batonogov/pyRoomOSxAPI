@@ -1,4 +1,4 @@
-'''Data collector'''
+'Data collector'
 import time
 from textwrap import wrap
 from selenium import webdriver
@@ -12,8 +12,10 @@ TEMP_LINES = []
 
 # Генератор стукруты из списка
 def generator(data, file, info, indent = ' ' * 4):
-    '''Generate data from xapi and write data to file'''
+    'Generate data from xapi and write data to file'
+    # Ищем строки содержащие ":"
     colon_finder = [c for c in range(len(data)) if ':' in data[c] or 'Raw' in data[c]]
+    # Если нашли ":", то ограничиваем список
     if colon_finder:
         data = data[:colon_finder[0]]
 
@@ -37,7 +39,7 @@ def generator(data, file, info, indent = ' ' * 4):
 
 # Запрос перечня ссылок на группы комманд
 def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name=None):
-    '''Get links on command groups'''
+    'Get links on command groups'
 
     with open(f'pyroomos/{output_file_name}', 'w', encoding='utf-8') as file:
         driver = webdriver.Chrome()
@@ -80,25 +82,26 @@ def xapi_cmd(url='https://roomos.cisco.com/xapi?Product=hopen', output_file_name
 
                 info = driver.find_element(By.CLASS_NAME, 'info').text.split()
 
-                # try:
-                #     param = driver.find_element(By.CLASS_NAME, 'param').text
-                #     print(f"'''\n{param}\n'''\n\n")
-                #     file.write(f"'''\n{param}\n'''\n\n")
-                # except:
-                #     pass
+                try:
+                    param = driver.find_element(By.CLASS_NAME, 'param').text
+                    # print(f"'''\n{param}\n'''\n\n")
+                    file.write(f"'''\n{param}\n'''\n\n")
+                except:
+                    pass
 
-                # try:
-                #     props = driver.find_element(By.CLASS_NAME, 'props').text
-                #     print(f"'''\n{props}\n'''\n\n")
-                #     file.write(f"'''\n{props}\n'''\n\n")
-                # except:
-                #     pass
+                try:
+                    props = driver.find_element(By.CLASS_NAME, 'props').text
+                    # print(f"'''\n{props}\n'''\n\n")
+                    file.write(f"'''\n{props}\n'''\n\n")
+                except:
+                    pass
 
                 print('REFERENCE:', reference, '\n')
                 print('INFO:', info, '\n')
+                print('PARAM:', param, '\n')
+                print('PROPS:', props, '\n')
 
                 generator(data=switcher, file=file, info=info)
 
 if __name__ == '__main__':
     xapi_cmd(output_file_name='xCommand.py')
-    print('\ndone')
