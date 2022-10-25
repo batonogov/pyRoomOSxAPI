@@ -591,10 +591,6 @@ class Conference:
         cloud service or linked to Webex Edge for Devices."""                
         return "xCommand Conference MuteOnEntry"
 
-    def SkinTone():                
-        """"""                
-        return "xCommand Conference SkinTone"
-
     def TransferHostAndLeave():                
         """Lets you leave a meeting you are hosting, but allows the other particpants to
         continue the meeting. A new host is assigned automatically"""                
@@ -698,6 +694,14 @@ class Conference:
             """Sends a reaction (emoji) during a Webex meeting. The device must either be
             registered to the Webex cloud service or linked to Webex Edge for Devices."""                
             return "xCommand Conference Reaction Send"
+
+        def Tone():                
+            """Selects the skin tone to be used for the emojis sent hereafter. Skin tones are
+            available for reactions that use hand gestures, such as thumbs up and clapping
+            hands. For personal mode devices the skin tone will persist between calls; for
+            shared mode devices it will be reset when a call ends. The device must either be
+            registered to the Webex cloud service or linked to Webex Edge for Devices."""                
+            return "xCommand Conference Reaction Tone"
 
     class Recording:
     
@@ -1266,14 +1270,6 @@ class Security:
                     for services within the CUCM cluster that the device is to trust."""                
                     return "xCommand Security Certificates CUCM CTL Show"
 
-            class ITL:
-            
-                def Show():                
-                    """Shows the details of the Identity Trust List (ITL) on this device. ITL is used
-                    for devices that are registered to CUCM and contains a list of certificates for
-                    services within the CUCM cluster that the device is to trust."""                
-                    return "xCommand Security Certificates CUCM ITL Show"
-
             class MIC:
             
                 def Show():                
@@ -1597,16 +1593,15 @@ class UserInterface:
             This is a multiline command."""                
             return "xCommand UserInterface Extensions Set"
 
+        class Panel:
+        
+            def Open():                
+                """Opens the custom panel that has the given PanelId. If the panel has multiple
+                pages you can specify which page to open by including the PageId parameter."""                
+                return "xCommand UserInterface Extensions Panel Open"
+
         class Icon:
         
-            def Delete():                
-                """Delete an icon from the device's list of UI extension icons. Specify the id of
-                the icon to be deleted. You can use xCommand UserInterface Extensions Icon List
-                to get a list of all the icons with ids. If you are not sure which icon is the
-                one you are looking for, you can use xcommand UserInterface Icon Get to get the
-                base64-encoded value and use an internet tool to decode base64 to image."""                
-                return "xCommand UserInterface Extensions Icon Delete"
-
             def DeleteAll():                
                 """Delete all or a subset of UI extensions icons."""                
                 return "xCommand UserInterface Extensions Icon DeleteAll"
@@ -1638,8 +1633,6 @@ class UserInterface:
                 command. Provide a base64-encoded version of an image."""                
                 return "xCommand UserInterface Extensions Icon Upload"
 
-        class Panel:
-        
             def Clicked():                
                 """Creates an event when the user clicks a custom panel."""                
                 return "xCommand UserInterface Extensions Panel Clicked"
@@ -1647,11 +1640,6 @@ class UserInterface:
             def Close():                
                 """Closes an open custom panel."""                
                 return "xCommand UserInterface Extensions Panel Close"
-
-            def Open():                
-                """Opens the custom panel that has the given PanelId. If the panel has multiple
-                pages you can specify which page to open by including the PageId parameter."""                
-                return "xCommand UserInterface Extensions Panel Open"
 
             def Remove():                
                 """Removes the custom panel from the user interface of this device."""                
@@ -1667,12 +1655,6 @@ class UserInterface:
                 """Updates the custom panel that has the given PanelId. Successful changes are
                 immediately visible on the endpoint."""                
                 return "xCommand UserInterface Extensions Panel Update"
-
-        class WebApp:
-        
-            def Save():                
-                """"""                
-                return "xCommand UserInterface Extensions WebApp Save"
 
         class Widget:
         
@@ -1791,13 +1773,18 @@ class UserInterface:
                 introduction section in this guide."""                
                 return "xCommand UserInterface Message TextInput Response"
 
+    class Presentation:
+    
+        class ExternalSource:
+        
+            class State:
+            
+                def Set():                
+                    """Set or change the state of the input source (specified by the SourceIdentifier)."""                
+                    return "xCommand UserInterface Presentation ExternalSource State Set"
+
         class TextLine:
         
-            def Clear():                
-                """Remove the text line which was displayed by the UserInterface Message TextLine
-                Display command. This is required when the Duration parameter is not set."""                
-                return "xCommand UserInterface Message TextLine Clear"
-
             def Display():                
                 """Display a text line on screen. Optionally you can place the text line at a
                 specified location and for a specified duration of time. If Duration is not set,
@@ -1805,10 +1792,6 @@ class UserInterface:
                 command."""                
                 return "xCommand UserInterface Message TextLine Display"
 
-    class Presentation:
-    
-        class ExternalSource:
-        
             def Add():                
                 """Establish and set up an input source that is connected to the device via an
                 external switch."""                
@@ -1833,12 +1816,6 @@ class UserInterface:
                 command). The input source will be shown in the user interface sharetray as
                 "Presenting"."""                
                 return "xCommand UserInterface Presentation ExternalSource Select"
-
-            class State:
-            
-                def Set():                
-                    """Set or change the state of the input source (specified by the SourceIdentifier)."""                
-                    return "xCommand UserInterface Presentation ExternalSource State Set"
 
     class Translation:
     
